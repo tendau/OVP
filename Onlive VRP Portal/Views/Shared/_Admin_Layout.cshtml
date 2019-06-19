@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - OVP</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/themes/base/all.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/UMD/popper-utils.js"></script>
+    <script src="~/Scripts/UMD/popper.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md headerbar" role="navigation">
+
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="~/Content/Images/New-Alpine-Logo-12-2017.png" id="headerimg" /></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#This-Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="This-Navbar">
+                <div class="navbar-header text-centered ml-auto">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#main">Main</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#adminMessage">Messages</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#userManager">Manage Users</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Online VRP Portal</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+</body>
+</html>

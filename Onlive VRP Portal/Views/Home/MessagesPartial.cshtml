@@ -1,0 +1,64 @@
+﻿@model List<Onlive_VRP_Portal.Models.ViewModel.MessageDataView>
+
+<div id="messages" class="container section">
+    <div class="row">
+        <div class="col-md-2">
+            <a href="#stopServiceModal" data-toggle="modal" data-target="#newMessageModal" class="btn btn-outline-primary btn-block">New Message</a>
+        </div>
+        <div class="col-md-10">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Subject
+                        </th>
+                        <th>
+                            Message
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var dataView in Model)
+                {
+                    <tr>
+                        <td><strong>@dataView.subject</strong></td>
+                        <td>@dataView.message</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+@*Modal for new service*@
+<div class="modal" tabindex="-1" role="dialog" id="newMessageModal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Home/NewMessage">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="subject">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject..." />
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="message">Message</label>
+                                <textarea rows="5" style="resize:none" class="form-control" id="message" name="message" placeholder="Message..."></textarea>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close"></i> Cancel</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

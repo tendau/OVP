@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Main";
+    Layout = "~/Views/Shared/_Main_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="tab-content col-md-12" style="padding-top: 15px; padding-bottom:15px;">
+            <div id="accountInfo" class="tab-pane fade active show">
+                @Html.Action("AccountInfoPartial", "Home")
+            </div>
+            <div id="services" class="tab-pane fade">
+                @Html.Action("ServicePartial", "Home")
+                @*<hr />
+                    @Html.Action("WOPartial", "Home")*@
+            </div>
+            <div id="messages" class="tab-pane fade">
+                @Html.Action("MessagesPartial", "Home")
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Signout", "SignOut", "Account")
+</div>

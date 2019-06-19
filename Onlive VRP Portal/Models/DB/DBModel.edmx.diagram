@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c6eef10b5d8144fb9db6d05b616fcb66" Name="Diagram1" ZoomLevel="33">
+        <EntityTypeShape EntityType="Model.dCustomer" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.dTray" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.dWorkOrder" Width="1.5" PointX="11" PointY="2.625" />
+        <EntityTypeShape EntityType="Model.dWorkorder_Charge" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.dWorkorder_Comment" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.dWorkorder_Setup" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.dCharge" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Model.dCode" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Model.dOVP_Message" Width="1.5" PointX="7.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Model.dComment" Width="1.5" PointX="9.375" PointY="14.75" />
+        <EntityTypeShape EntityType="Model.dComment_Type_Setup" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.dOVP_LOOKUPRole" Width="1.5" PointX="8.5" PointY="8.5" />
+        <EntityTypeShape EntityType="Model.dOVP_SYSUser" Width="1.5" PointX="5.25" PointY="8.25" />
+        <EntityTypeShape EntityType="Model.dOVP_SYSUserProfile" Width="1.5" PointX="2.875" PointY="8.25" />
+        <EntityTypeShape EntityType="Model.dOVP_SYSUserRole" Width="1.5" PointX="6.875" PointY="8.375" />
+        <AssociationConnector Association="Model.FK__dOVP_SYSU__LOOKU__534E2C48" />
+        <AssociationConnector Association="Model.FK__dOVP_SYSU__SYSUs__4D9552F2" />
+        <AssociationConnector Association="Model.FK__dOVP_SYSU__SYSUs__54425081" />
+        <EntityTypeShape EntityType="Model.dRoute" Width="1.5" PointX="15.375" PointY="5" />
+        <EntityTypeShape EntityType="Model.dRoute_Cycle_Date" Width="1.5" PointX="5.375" PointY="6" />
+        <EntityTypeShape EntityType="Model.dOVP_Services" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.dTransaction" Width="1.5" PointX="15.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

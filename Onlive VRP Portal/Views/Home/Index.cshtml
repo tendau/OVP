@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container login-container">
+    <div class="row">
+        <img id="headerimg" src="~/Content/Images/New-Alpine-Logo-12-2017.png" alt="Alpine Logo" />
+        <br />
+        @Html.ActionLink("Login!", "LogIn", "Account")
+        <br />
+        No Account yet? @Html.ActionLink("Signup Now!", "SignUp", "Account")
+        <br />
+        New Customer? @Html.ActionLink("Signup for service now!", "NewCustomerSignUp", "Account")
+    </div>
+    
+</div>

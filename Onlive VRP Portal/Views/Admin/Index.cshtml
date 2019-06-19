@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Admin:</h2>
+
+    <div class="tab-content col-md-10">
+        <div id="main" class="tab-pane fade in active">
+            Main
+        </div>
+        <div id="adminMessage" class="tab-pane fade">
+            @Html.Action("AdminMessagePartial", "Admin")
+        </div>
+        <div id="userManager" class="tab-pane fade">
+            @* Put user manager partial here *@
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Signout", "SignOut", "Account")
+</div>

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Onlive_VRP_Portal.Models.ViewModel.AdminMessageView>
+
+<a href="javascript:void(0)" style="float: right" class="btn btn-info newMessage">Create New Message</a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.account)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.account)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteMessage", new { id = item.messageID })
+            </td>
+        </tr>
+    }
+</table>
+
+<div id="newMessageDialog" style="display:none">
+    <input type="hidden" id="hidID" />
+    <table>
+        <tr>
+            <td>To account (leave blank if to all): </td>
+            <td><input style="width: 300px" type="text" id="txtToAccount" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Subject: </td>
+            <td><input style="width: 300px" type="text" id="txtSubject" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Message: </td>
+            <td><input style="height:300px; width: 300px;" type="text" id="txtMessage" class="form-control" /></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        var initDialog = function (type) {
+            var title = type;
+            $('#newMessageDialog').dialog({
+                autoOpen: false,
+                modal: true,
+                title: type,
+                width: 500,
+                buttons: {
+                    Save: function () {
+                        var account = $("#txtToAccount").val();
+                        var subject = $("#txtSubject").val();
+                        var message = $("#txtMessage").val();
+
+                        CreateMessage(account, subject, message);
+                        $(this).dialog("destroy");
+                    },
+                    Cancel: function () { $(this).dialog("destroy"); }
+                }
+            });
+        }
+
+        function CreateMessage(account, subject, message) {
+            $.ajax({
+                type: "POST",
+                url: "@(Url.Action("CreateMessage", "Admin"))",
+                data: { Account: account, Subject: subject, Message: message }
+            });
+        }
+
+        $("a.newMessage").on("click", function () {
+            initDialog("New Message");
+            $("#newMessageDialog").dialog("open");
+            return false;
+        });
+    });
+</script>

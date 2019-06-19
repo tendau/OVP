@@ -1,0 +1,405 @@
+﻿@model Onlive_VRP_Portal.Models.ViewModel.ServicePartialView
+
+<div id="serviceInfo" class="container">
+
+    <div class="row section">
+        <div class="col-12 text-center">
+            <h3>Current Services</h3>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3 mb-5">
+            <img src="~/Content/Images/ServicesIcon.png" class="img-fluid float-right" />
+        </div>
+        <div class="col-3 text-center">
+            <p>Current Service:</p>
+        </div>
+        <div class="col-3 text-left">
+
+            @foreach (var dataView in Model.currentServices)
+            {
+                <p>@Html.DisplayFor(m => dataView.Description)</p>
+            }
+        </div>
+        <div class="col-1"></div>
+    </div>
+
+    <div class="row section">
+        <div class="col-12 text-center">
+            <h3>Other Services</h3>
+        </div>
+        <div class="col-md-4 text-center">
+            <p>Residential/Commercial Services</p>
+            <hr />
+            <div class="row">
+                <div class="col-4 text-center p-0">
+                    <a href="#stopServiceModal" data-toggle="modal" data-target="#stopServiceModal"><img src="~/Content/Images/stopserviceicon.png" class="img-fluid btnicon" /></a>
+                    <p>Stop or Pause Service</p>
+                </div>
+                <div class="col-4 text-center p-0">
+                    <a href="#newServiceModal" data-toggle="modal" data-target="#newServiceModal"><img src="~/Content/Images/newserviceicon.png" class="img-fluid btnicon" /></a>
+                    <p>New Service</p>
+                </div>
+                <div class="col-4 text-center p-0">
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#changeServiceModal"><img src="~/Content/Images/changeserviceicon.png" class="img-fluid btnicon" /></a>
+                    <p>Change Service</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <p>One-Time Service</p>
+            <hr />
+            <div class="row">
+                <div class="col-12 text-center p-0">
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#oneTimeServiceModal"><img src="~/Content/Images/newserviceicon.png" class="img-fluid btnicon" /></a>
+                    <p>Extra Service</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <p>Roll-Off Services</p>
+            <hr />
+            <div class="row">
+                <div class="col-6 text-center p-0">
+                    <a href="#newWOServiceModal" data-toggle="modal" data-target="#newWOServiceModal"><img src="~/Content/Images/newserviceicon.png" class="img-fluid btnicon" /></a>
+                    <p>New Service</p>
+                </div>
+
+                <div class="col-6 text-center p-0">
+                    <a href="#scheduleServiceModal" data-toggle="modal" data-target="#scheduleServiceModal"><img src="~/Content/Images/scheduleicon.png" class="img-fluid btnicon" /></a>
+                    <p>Schedule Pick-Up</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modal for change service*@
+<div class="modal" tabindex="-1" role="dialog" id="changeServiceModal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Change Service</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="changeServiceForm" method="post" action="/Home/StopService">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <input type="hidden" id="hidID" />
+                        @if (Model.currentServices.Count > 0)
+                        {
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="currentServices">Select A Service To Change</label>
+                                    @Html.DropDownListFor(m => m.SelectedCurrentService, Model.CurrentServicesDD, new { @class = "form-control" })
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="changeServiceDD">Select An Option Below</label>
+                                        @Html.DropDownListFor(m => m.ChangeServiceOptions, Model.ChangeServiceOptions, new { @class = "form-control", @id = "changeServiceDD", @name = "changeServiceDD", @placeholder = "Select..." })
+                                        @Html.ValidationMessageFor(m => m.ChangeServiceOptions)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" id="changeServiceOptions">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="Details">Additional information</label>
+                                    <textarea rows="5" style="resize:none" class="form-control" id="changeDetails" name="changeDetails" placeholder="Additional Information"></textarea>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <p>
+                                You do not have any current services! If you would like to sign up for service please either do so using this site
+                                or call us at 719-382-8214 to get started.
+                            </p>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*Modal for stop service*@
+<div class="modal" tabindex="-1" role="dialog" id="stopServiceModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Stop Or Pause Service</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Home/StopService">
+                <div class="modal-body">
+                    <input type="hidden" id="hidID" />
+                    @if (Model.currentServices.Count > 0)
+                    {
+                        <p>Please select the service or services that you want to stop from the list below.</p>
+                        foreach (var dataView in Model.currentServices)
+                        {
+                            <div class="row">
+                                <div class="col-2 justify-content-center">
+                                    <input class="form-control-lg" type="checkbox" name="ServiceIds" value="@dataView.ID" />
+                                </div>
+                                <div class="col-10">
+                                    <p>@Html.DisplayFor(m => dataView.Description)</p>
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="col-12">
+                                <p>If you wish to pause your service please insert a date to restart below</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @*<td><input name="RestartDate" id="dpDate" class="form-control datepicker" placeholder="Enter date here..." /></td>*@
+                            <div class="col-12">
+                                @Html.EditorFor(m => m.RestartDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Restart Date" } })
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <p>
+                            You do not have any current services! If you would like to sign up for service please either do so using this site
+                            or call us at 719-382-8214 to get started.
+                        </p>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*Modal for new service*@
+<div class="modal" tabindex="-1" role="dialog" id="newServiceModal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Service</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Home/NewService">
+                <div class="modal-body">
+                    <input type="hidden" id="hidID" />
+                    <div class="row text-center">
+                        <p>You are requesting a new service please fill out the below fields:</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <p style="text-align:right; font-size:large;" class="my-auto">Type:</p>
+                        </div>
+                        <div class="col-10">
+                            @Html.DropDownListFor(m => m.SelectedServiceType, Model.AvailableRecurringServices, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SelectedServiceType)
+                        </div>
+                        <div class="col-2">
+                            <p style="text-align:right; font-size:large;" class="my-auto">Start Date:</p>
+                        </div>
+                        <div class="col-10">
+                            @Html.EditorFor(m => m.StartDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Start Date" } })
+                            @Html.ValidationMessageFor(m => m.StartDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*Modal for one time service*@
+<div class="modal fade" tabindex="-1" role="dialog" id="oneTimeServiceModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New one time service request</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form method="post" action="/Home/NewOneTimeService">
+                <div class="modal-body">
+                    <input type="hidden" id="hidID" />
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="type">Select A Service Type</label>
+                                @Html.DropDownListFor(m => m.SelectedOTServiceType, Model.AvailableOneTimeServices, new { @class = "form-control", @id = "type", @name = "type" })
+                                @Html.ValidationMessageFor(m => m.SelectedOTServiceType)
+                            </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="Date">Date For Service</label>
+                                    @Html.EditorFor(m => m.OTServiceDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Service Date", @id = "Date" } })
+                                    @Html.ValidationMessageFor(m => m.OTServiceDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*Modal for new WO service*@
+<div class="modal" tabindex="-1" role="dialog" id="newWOServiceModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Roll-Off Service</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Home/StopService">
+                <div class="modal-body">
+                    <input type="hidden" id="hidID" />
+                    <p>Please select the service or services from the list below.</p>
+                    <select class="form-control">
+                        <option>10-yard containers 3.5’ tall x 8’ wide x 16’ long</option>
+                        <option>15-yard containers 4.5’ tall x 8’ wide x 16’ long</option>
+                        <option>20-yard containers 4.5’ tall x 8’ wide x 22’ long</option>
+                        <option>30-yard containers 6’ tall x 8’ wide x 22’ long  </option>
+                        <option>40-yard containers 8’ tall x 8’ wide x 22’ long  </option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*Modal for Schedule Pickup*@
+<div class="modal" tabindex="-1" role="dialog" id="scheduleServiceModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Schedule Service</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Home/StopService">
+                <div class="modal-body">
+                    <div class="row">
+                        <p style="margin:5px;">Please select which service you would like to schedule a pick up for.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+
+                        </div>
+                        <div class="col-5">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                20-yard can #75463
+                            </label>
+                        </div>
+                        <div class="col-5">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                20-yard can #54324
+                            </label>
+                        </div>
+                    </div>
+                    <br />
+                        <div class="row">
+                            <select class="form-control">
+                                <option>Select type of service to schedule</option>
+                                <option>Dump and return</option>
+                                <option>Dump and remove</option>
+                                <option>Replace bin</option>
+                                <option>Report damage</option>
+                            </select>
+                        </div>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="damagedBinDialog" style="display:none">
+    <input type="hidden" id="hidID" />
+    <p>Please describe the damage. (including how it occurred)</p>
+    <div class="form-group">
+        <label for="textDescription">Description of damage:</label>
+        <textarea class="form-control" style="min-width:100%;" rows="5" id="textDescription"></textarea>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".datepicker").datepicker({
+            dateFormat: "mm-dd-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-60:+0"
+        });
+    });
+    $("#changeServiceDD").change(function () {
+        if ($("#changeServiceDD").val() == "size") {
+            $("#changeServiceForm").attr("action","/Home/ChangeSize");
+            $("#changeServiceOptions").html($('#changeSizeTemplate').html());
+        }
+        else if ($("#changeServiceDD").val() == "frequency") {
+            $("#changeServiceForm").attr("action", "/Home/ChangeFrequency");
+            $("#changeServiceOptions").html($('#changeFrequencyTemplate').html());
+        }
+    });
+</script>
+
+<script id="changeFrequencyTemplate" type="text/template">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="changeFrequnecyDD">Choose new frequency</label>
+                @Html.DropDownListFor(m => m.SelectedFrequency, Model.FrequencyOptions, new { @class = "form-control", @id = "changeFrequencyDD", @name = "changeFrequencyDD" })
+                @Html.ValidationMessageFor(m => m.FrequencyOptions)
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="changeSizeTemplate" type="text/template">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="changeSizeDD">Select larger or smaller can...</label>
+                @Html.DropDownListFor(m => m.SelectedSize, Model.SizeOptions, new { @class = "form-control", @id = "changeSizeDD", @name = "changeSizeDD" })
+                @Html.ValidationMessageFor(m => m.SizeOptions)
+            </div>
+        </div>
+    </div>
+</script>

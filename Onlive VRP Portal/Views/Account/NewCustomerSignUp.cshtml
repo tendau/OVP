@@ -1,0 +1,164 @@
+﻿@model Onlive_VRP_Portal.Models.ViewModel.NewCustomerView
+
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SignUp</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="content-section">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.BillingFirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "First Name" } })
+                @Html.ValidationMessageFor(model => model.BillingFirstName, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.BillingLastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last Name" } })
+                @Html.ValidationMessageFor(model => model.BillingLastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.BillingAddressNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Street Number" } })
+                @Html.ValidationMessageFor(model => model.BillingAddressNumber, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.BillingStreet, new { htmlAttributes = new { @class = "form-control", @placeholder = "Street" } })
+                @Html.ValidationMessageFor(model => model.BillingStreet, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.BillingSuf, new { htmlAttributes = new { @class = "form-control", @placeholder = "Street Suffix" } })
+                @Html.ValidationMessageFor(model => model.BillingSuf, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.BillingCity, new { htmlAttributes = new { @class = "form-control", @placeholder = "City" } })
+                @Html.ValidationMessageFor(model => model.BillingCity, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.BillingState, new { htmlAttributes = new { @class = "form-control", @placeholder = "State" } })
+                @Html.ValidationMessageFor(model => model.BillingState, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.BillingZip, new { htmlAttributes = new { @class = "form-control", @placeholder = "Zip" } })
+                @Html.ValidationMessageFor(model => model.BillingZip, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <!-- Material unchecked -->
+    <div class="form-check row">
+        <input type="checkbox" id="billSameAsSite" name="billSameAsSite" onchange="billingFunction()"> Site location is same as billing<br>
+    </div>
+    <div class="content-section">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.SiteFirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Site First Name" } })
+                @Html.ValidationMessageFor(model => model.SiteFirstName, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.SiteLastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Site Last Name" } })
+                @Html.ValidationMessageFor(model => model.SiteLastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.StreetNum, new { htmlAttributes = new { @class = "form-control", @placeholder = "Street Number" } })
+                @Html.ValidationMessageFor(model => model.StreetNum, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.StreetName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Street" } })
+                @Html.ValidationMessageFor(model => model.StreetName, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.StreetSuf, new { htmlAttributes = new { @class = "form-control", @placeholder = "Street suffix" } })
+                @Html.ValidationMessageFor(model => model.StreetSuf, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.SiteCity, new { htmlAttributes = new { @class = "form-control", @placeholder = "City" } })
+                @Html.ValidationMessageFor(model => model.SiteCity, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.SiteState, new { htmlAttributes = new { @class = "form-control", @placeholder = "State" } })
+                @Html.ValidationMessageFor(model => model.SiteState, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.SiteZip, new { htmlAttributes = new { @class = "form-control", @placeholder = "Zip" } })
+                @Html.ValidationMessageFor(model => model.SiteZip, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.USV.LoginName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.USV.LoginName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.USV.LoginName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.USV.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.PasswordFor(model => model.USV.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.USV.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.USV.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-6">
+            @Html.TextBoxFor(model => model.USV.Email, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Register" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to Main", "LogIn", "Account")
+    </div>
+
+<script>
+    function billingFunction() {
+        if (document.getElementById("billSameAsSite").checked) {
+            document.getElementById("SiteFirstName").value = document.getElementById("BillingFirstName").value;
+            document.getElementById("SiteLastName").value = document.getElementById("BillingLastName").value;
+            document.getElementById("StreetNum").value = document.getElementById("BillingAddressNumber").value;
+            document.getElementById("StreetName").value = document.getElementById("BillingStreet").value;
+            document.getElementById("StreetSuf").value = document.getElementById("BillingSuf").value;
+            document.getElementById("SiteCity").value = document.getElementById("BillingCity").value;
+            document.getElementById("SiteState").value = document.getElementById("BillingState").value;
+            document.getElementById("SiteZip").value = document.getElementById("BillingZip").value;
+        }
+        else {
+            document.getElementById("SiteFirstName").value = "";
+            document.getElementById("SiteLastName").value = "";
+            document.getElementById("StreetNum").value = "";
+            document.getElementById("StreetName").value = "";
+            document.getElementById("StreetSuf").value = "";
+            document.getElementById("SiteCity").value = "";
+            document.getElementById("SiteState").value = "";
+            document.getElementById("SiteZip").value = "";
+        }
+  }
+</script>

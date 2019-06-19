@@ -1,0 +1,52 @@
+﻿@model Onlive_VRP_Portal.Models.ViewModel.UserLoginView
+
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container login-container col-sm-offset-4">
+    <div class="row justify-content-center">
+        <img id="headerimg" src="~/Content/Images/New-Alpine-Logo-12-2017.png" alt="Alpine Logo" />
+    </div>
+    <div class="row justify-content-center">
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.LoginName, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.LoginName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LoginName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <input type="submit" value="Login" class="btn btn-default" style="width:100%; background-color:white;" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row justify-content-center">
+        No Account yet? @Html.ActionLink(" Signup Now!", "SignUp", "Account")
+    </div>
+    <div class="row justify-content-center">
+        New Customer? @Html.ActionLink(" Signup for service now!", "NewCustomerSignUp", "Account")
+    </div>
+
+</div>

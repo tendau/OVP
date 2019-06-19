@@ -1,0 +1,443 @@
+﻿@model Onlive_VRP_Portal.Models.ViewModel.CustomerDataView
+
+<div class="container">
+    <div class="row section">
+        <div class="col-1">
+            <img src="~/Content/Images/billingicon.png" class="img-fluid" />
+        </div>
+        <div class="col-7 info">
+            <h3>Billing Info:</h3>
+            <table cellspacing="100">
+                <tr>
+                    <td>Account:</td>
+                    <td> @Html.DisplayFor(m => Model.Account)</td>
+                </tr>
+                <tr>
+                    <td>Billing Name:</td>
+                    <td>
+                        @Html.DisplayFor(m => Model.BillingName)<a href="#editAccountModal" data-toggle="modal" data-target="#editAccountModal"><img class="buttonImage img-fluid" src="~/Content/Images/editicon.png" /></a>
+                    </td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Billing Address:</td>
+                    <td> @Html.DisplayFor(m => Model.BillingAddress)</td>
+                </tr>
+                <tr>
+                    <td>Billing City:</td>
+                    <td> @Html.DisplayFor(m => Model.BillingCity)</td>
+                </tr>
+                <tr>
+                    <td>Billing State:</td>
+                    <td> @Html.DisplayFor(m => Model.BillingState)</td>
+                </tr>
+                <tr>
+                    <td>Billing Zip:</td>
+                    <td> @Html.DisplayFor(m => Model.BillingZip)</td>
+                </tr>
+                <tr>
+                    <td>Billing Phone:</td>
+                    <td> @Html.DisplayFor(m => Model.BillingPhone)<a href="#editAccountModal" data-toggle="modal" data-target="#editAccountModal"><img class="buttonImage img-fluid" src="~/Content/Images/editicon.png" /></a></td>
+                </tr>
+                <tr>
+                    <td>Billing Email:</td>
+                    <td> @Html.DisplayFor(m => Model.BillingEmail)<a href="#editAccountModal" data-toggle="modal" data-target="#editAccountModal"><img class="buttonImage img-fluid" src="~/Content/Images/editicon.png" /></a></td>
+                </tr>
+                <tr>
+                    <td>Balance:</td>
+                    <td> @Html.DisplayFor(m => Model.Balance)</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-4 text-center flex-column my-auto">
+            <h3>Pay Bill Online</h3>
+            <a href="#"><img src="~/Content/Images/MOBicon.png" /></a>
+        </div>
+    </div>
+
+    <div class="row section">
+        <div class="col-sm-1">
+            <img src="~/Content/Images/infoicon.png" class="img-fluid" />
+        </div>
+        <div class="col-sm-11">
+            <h3>Site Info:</h3>
+            <table cellspacing="100">
+                <tr>
+                    <td>Site Name:</td>
+                    <td> @Html.DisplayFor(m => Model.SiteName)<a href="#editAccountModal" data-toggle="modal" data-target="#editAccountModal"><img class="buttonImage img-fluid" src="~/Content/Images/editicon.png" /></a></td>
+                </tr>
+                <tr>
+                    <td>Site Address:</td>
+                    <td> @Html.DisplayFor(m => Model.SiteAddress)</td>
+                </tr>
+                <tr>
+                    <td>Site City:</td>
+                    <td> @Html.DisplayFor(m => Model.SiteCity)</td>
+                </tr>
+                <tr>
+                    <td>Site State:</td>
+                    <td> @Html.DisplayFor(m => Model.SiteState)</td>
+                </tr>
+                <tr>
+                    <td>Site Zip:</td>
+                    <td> @Html.DisplayFor(m => Model.SiteZip)</td>
+                </tr>
+                <tr>
+                    <td>Site Phone:</td>
+                    <td> @Html.DisplayFor(m => Model.SitePhone)<a href="#editAccountModal" data-toggle="modal" data-target="#editAccountModal"><img class="buttonImage img-fluid" src="~/Content/Images/editicon.png" /></a></td>
+                </tr>
+                <tr>
+                    <td>Site Email:</td>
+                    <td> @Html.DisplayFor(m => Model.SiteEmail)<a href="#editAccountModal" data-toggle="modal" data-target="#editAccountModal"><img class="buttonImage img-fluid" src="~/Content/Images/editicon.png" /></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <a href="#reportNewAddressModal" data-toggle="modal" data-target="#reportNewAddressModal">Moving? Click here to report a new address</a>
+        </div>
+    </div>
+</div>
+
+@*<div id="editAccountDialog" style="display:none">
+        <input type="hidden" id="hidID" />
+        <table>
+            <tr>
+                <td>Billing Name</td>
+                <td>
+                    @Html.TextBoxFor(m => m.BillingName, new { id = "TextBillingName" })
+                </td>
+            </tr>
+            <tr>
+                <td>Billing Phone</td>
+                <td>
+                    @Html.TextBoxFor(m => m.BillingPhone, new { id = "TextBillingPhone" })
+                </td>
+            </tr>
+            <tr>
+                <td>Billing Email</td>
+                <td>
+                    @Html.TextBoxFor(m => m.BillingEmail, new { id = "TextBillingEmail" })
+                </td>
+            </tr>
+            <tr>
+                <td>Site Name</td>
+                <td>
+                    @Html.TextBoxFor(m => m.SiteName, new { id = "TextSiteName" })
+                </td>
+            </tr>
+            <tr>
+                <td>Site Phone</td>
+                <td>
+                    @Html.TextBoxFor(m => m.SitePhone, new { id = "TextSitePhone" })
+                </td>
+            </tr>
+            <tr>
+                <td>Site Email</td>
+                <td>
+                    @Html.TextBoxFor(m => m.SiteEmail, new { id = "TextSiteEmail" })
+                </td>
+            </tr>
+        </table>
+    </div>*@
+
+@*<div id="reportNewAddressDialog" style="display:none">
+    <input type="hidden" id="hidID" />
+    <table>
+        <tr>
+            <td>New Billing Address</td>
+            <td>
+                @Html.TextBoxFor(m => m.BillingAddress, new { id = "TextBillingAddress" })
+            </td>
+        </tr>
+        <tr>
+            <td>New Billing City</td>
+            <td>
+                @Html.TextBoxFor(m => m.BillingCity, new { id = "TextBillingCity" })
+            </td>
+        </tr>
+        <tr>
+            <td>New Billing State</td>
+            <td>
+                @Html.TextBoxFor(m => m.BillingState, new { id = "TextBillingState" })
+            </td>
+        </tr>
+        <tr>
+            <td>New Billing Zip</td>
+            <td>
+                @Html.TextBoxFor(m => m.BillingZip, new { id = "TextBillingZip" })
+            </td>
+        </tr>
+        <tr>
+            <td>New Site Address</td>
+            <td>
+                @Html.TextBoxFor(m => m.SiteAddress, new { id = "TextSiteAddress" })
+            </td>
+        </tr>
+        <tr>
+            <td>New Site City</td>
+            <td>
+                @Html.TextBoxFor(m => m.SiteCity, new { id = "TextSiteCity" })
+            </td>
+        </tr>
+        <tr>
+            <td>New Site State</td>
+            <td>
+                @Html.TextBoxFor(m => m.SiteState, new { id = "TextSiteState" })
+            </td>
+        </tr>
+        <tr>
+            <td>New Site Zip</td>
+            <td>
+                @Html.TextBoxFor(m => m.SiteZip, new { id = "TextSiteZip" })
+            </td>
+        </tr>
+    </table>
+</div>*@
+
+@*Modal for edit account*@
+<div class="modal" tabindex="-1" role="dialog" id="reportNewAddressModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New Adress</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Home/reportNewAddress">
+                <div class="modal-body">
+                    <input type="hidden" id="hidID" />
+                    <div class="row">
+                        <div class="col-5">
+                            <p><b>Billing Address:</b></p>
+                        </div>
+                        <div class="col-7">
+                            @Html.TextBoxFor(m => m.BillingAddress, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <p><b>Billing City:</b></p>
+                        </div>
+                        <div class="col-7">
+                            @Html.TextBoxFor(m => m.BillingCity, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <p><b>Billing State:</b></p>
+                        </div>
+                        <div class="col-7">
+                            @Html.TextBoxFor(m => m.BillingState, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <p><b>Billing Zip:</b></p>
+                        </div>
+                        <div class="col-7">
+                            @Html.TextBoxFor(m => m.BillingZip, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <p><b>Site Address:</b></p>
+                        </div>
+                        <div class="col-7">
+                            @Html.TextBoxFor(m => m.SiteAddress, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <p><b>Site City:</b></p>
+                        </div>
+                        <div class="col-7">
+                            @Html.TextBoxFor(m => m.SiteCity, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <p><b>Site State:</b></p>
+                        </div>
+                        <div class="col-7">
+                            @Html.TextBoxFor(m => m.SiteState, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <p><b>Site Zip:</b></p>
+                        </div>
+                        <div class="col-7">
+                            @Html.TextBoxFor(m => m.SiteZip, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@*Modal for edit account*@
+<div class="modal" tabindex="-1" role="dialog" id="editAccountModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/Home/EditAccount">
+                <div class="modal-body">
+                    <input type="hidden" id="hidID" />
+                    <div class="row">
+                        <div class="col-4">
+                            <p><b>Billing Name:</b></p>
+                        </div>
+                        <div class="col-8">
+                            @Html.TextBoxFor(m => m.BillingName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <p><b>Billing Phone:</b></p>
+                        </div>
+                        <div class="col-8">
+                            @Html.TextBoxFor(m => m.BillingPhone, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <p><b>Billing Email:</b></p>
+                        </div>
+                        <div class="col-8">
+                            @Html.TextBoxFor(m => m.BillingEmail, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <p><b>Site Name:</b></p>
+                        </div>
+                        <div class="col-8">
+                            @Html.TextBoxFor(m => m.SiteName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <p><b>Site Phone:</b></p>
+                        </div>
+                        <div class="col-8">
+                            @Html.TextBoxFor(m => m.SitePhone, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <p><b>Site Email:</b></p>
+                        </div>
+                        <div class="col-8">
+                            @Html.TextBoxFor(m => m.SiteEmail, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close"></i> Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*<script type="text/javascript">
+    $(function () {
+
+        var initEditDialog = function (type) {
+            var title = type;
+            $('#editAccountDialog').dialog({
+                autoOpen: false,
+                modal: true,
+                title: type,
+                width: 400,
+                buttons: {
+                    Save: function () {
+                        var billName = $("#TextBillingName").val();
+                        var billPhone = $("#TextBillingPhone").val();
+                        var billEmail = $("#TextBillingEmail").val();
+                        var siteName = $("#TextSiteName").val();
+                        var sitePhone = $("#TextSitePhone").val();
+                        var siteEmail = $("#TextSiteEmail").val();
+
+                        EditAccount(billName, billPhone, billEmail, siteName, sitePhone, siteEmail);
+                        $(this).dialog("destroy");
+                    },
+                    Cancel: function () { $(this).dialog("destroy"); }
+                }
+            });
+        }
+
+        function EditAccount(billName, billPhone, billEmail, siteName, sitePhone, siteEmail) {
+            $.ajax({
+                type: "POST",
+                url: "@(Url.Action("EditAccount", "Home"))",
+                data: { BillName: billName, BillPhone: billPhone, BillEmail: billEmail, SiteName: siteName, SitePhone: sitePhone, SiteEmail: siteEmail },
+                success: function (data){
+                $("#accountInfo").load("@(Url.Action("AccountInfoPartial", "Home", new { status = "update" }))")
+                }
+             });
+        }
+
+        $("a.editAccount").on("click", function () {
+            initEditDialog("Edit Account");
+            $("#editAccountDialog").dialog("open");
+            return false;
+        });
+
+        var initAddressDialog = function (type) {
+            var title = type;
+            $('#reportNewAddressDialog').dialog({
+                autoOpen: false,
+                modal: true,
+                title: type,
+                width: 400,
+                buttons: {
+                    Save: function () {
+                        var billAddress = $("#TextBillingAddress").val();
+                        var billCity = $("#TextBillingCity").val();
+                        var billState = $("#TextBillingState").val();
+                        var billZip = $("#TextBillingZip").val();
+                        var siteAddress = $("#TextSiteAddress").val();
+                        var siteCity = $("#TextSiteCity").val();
+                        var siteState = $("#TextSiteState").val();
+                        var siteZip = $("#TextSiteZip").val();
+
+                        ReportNewAddress(billAddress, billState, billCity, billZip, siteAddress, siteCity, siteState, siteZip);
+                        $(this).dialog("destroy");
+                    },
+                    Cancel: function () { $(this).dialog("destroy"); }
+                }
+            });
+        }
+
+        function ReportNewAddress(billAddress, billState, billCity, billZip, siteAddress, siteCity, siteState, siteZip) {
+            $.ajax({
+                type: "POST",
+                url: "@(Url.Action("reportNewAddress", "Home"))",
+                data: { BillAddress: billAddress, BillState: billState, BillCity: billCity, BillZip: billZip, SiteAddress: siteAddress, SiteCity: siteCity, SiteState: siteState, SiteZip: siteZip }
+            });
+        }
+
+        $("a.reportNewAddress").on("click", function () {
+            initAddressDialog("New Address");
+            $("#reportNewAddressDialog").dialog("open");
+            return false;
+        });
+    });
+</script>*@

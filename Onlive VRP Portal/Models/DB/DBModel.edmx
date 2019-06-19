@@ -1,0 +1,1962 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dCharge">
+          <Key>
+            <PropertyRef Name="cId" />
+          </Key>
+          <Property Name="cId" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cAccount" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="cArea_ID" Type="char" MaxLength="14" />
+          <Property Name="cCycle_ID" Type="char" MaxLength="14" />
+          <Property Name="cCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="cDescript" Type="char" MaxLength="35" />
+          <Property Name="nUnits" Type="decimal" Precision="9" Scale="3" />
+          <Property Name="nOverride" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="cReference" Type="char" MaxLength="20" />
+          <Property Name="nFrequency" Type="decimal" Precision="3" Scale="1" />
+          <Property Name="nDiscount" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="dLast_service" Type="datetime" />
+          <Property Name="dNext_service" Type="datetime" />
+          <Property Name="dStart_date" Type="datetime" />
+          <Property Name="dReview_date" Type="datetime" />
+          <Property Name="dLast_review_date" Type="datetime" />
+          <Property Name="dApproved_date" Type="datetime" />
+          <Property Name="cApproved_user" Type="char" MaxLength="10" />
+          <Property Name="dStop_date" Type="datetime" />
+          <Property Name="cStop_code_ID" Type="char" MaxLength="14" />
+          <Property Name="cContract" Type="char" MaxLength="14" />
+          <Property Name="nLinks" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="mComment" Type="text" />
+          <Property Name="cProrate_type" Type="char" MaxLength="10" />
+          <Property Name="dProrate_date" Type="datetime" />
+          <Property Name="lHistory" Type="bit" />
+          <Property Name="nOld_route" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="cOld_day" Type="char" MaxLength="2" />
+          <Property Name="cOld_days" Type="char" MaxLength="7" />
+          <Property Name="cOld_container" Type="char" MaxLength="8" />
+          <Property Name="tTime_stamp" Type="datetime" />
+          <Property Name="nPrice_Per_Service" Type="decimal" Precision="12" Scale="3" />
+        </EntityType>
+        <EntityType Name="dCode">
+          <Key>
+            <PropertyRef Name="cCode" />
+          </Key>
+          <Property Name="cCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="cDescript" Type="char" MaxLength="35" />
+          <Property Name="cCategory_ID" Type="char" MaxLength="14" />
+          <Property Name="nUnit_price" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nFactor" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="cUnit_Of_Measure_ID" Type="char" MaxLength="14" />
+          <Property Name="lCredit" Type="bit" />
+          <Property Name="lSuspend" Type="bit" />
+          <Property Name="lContract_required" Type="bit" />
+          <Property Name="lService" Type="bit" />
+          <Property Name="lRental" Type="bit" />
+          <Property Name="lOnly_area_pricing" Type="bit" />
+          <Property Name="lAuto_copy_content_profile" Type="bit" />
+          <Property Name="lAccumulate_volume_stats" Type="bit" />
+          <Property Name="lUnits_required" Type="bit" />
+          <Property Name="lReference_required" Type="bit" />
+          <Property Name="lComment_required" Type="bit" />
+          <Property Name="lVolume_required" Type="bit" />
+          <Property Name="lCost_required" Type="bit" />
+          <Property Name="cGl_credit" Type="char" MaxLength="17" />
+          <Property Name="cGl_debit" Type="char" MaxLength="17" />
+          <Property Name="lIs_tax_code" Type="bit" />
+          <Property Name="lTax_1" Type="bit" />
+          <Property Name="lTax_2" Type="bit" />
+          <Property Name="lTax_3" Type="bit" />
+          <Property Name="lTax_4" Type="bit" />
+          <Property Name="lTax_5" Type="bit" />
+          <Property Name="cLink_type" Type="char" MaxLength="1" />
+          <Property Name="cLink_code" Type="char" MaxLength="6" />
+          <Property Name="nBreakpoint" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="cImage_ID" Type="char" MaxLength="14" />
+          <Property Name="mComment" Type="text" />
+          <Property Name="cReporting_Level_1" Type="char" MaxLength="14" />
+          <Property Name="cReporting_Level_2" Type="char" MaxLength="14" />
+          <Property Name="cReporting_Level_3" Type="char" MaxLength="14" />
+          <Property Name="tTime_stamp" Type="datetime" />
+          <Property Name="nPrice_Per_Service" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nPrice_Per_Service_Factor" Type="decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="dComment">
+          <Key>
+            <PropertyRef Name="cId" />
+          </Key>
+          <Property Name="cId" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cAccount" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="dDate" Type="datetime" />
+          <Property Name="dThru" Type="datetime" />
+          <Property Name="cType_ID" Type="char" MaxLength="14" />
+          <Property Name="lPin_note" Type="bit" />
+          <Property Name="lStatement" Type="bit" />
+          <Property Name="lRoute" Type="bit" />
+          <Property Name="mComment" Type="text" />
+          <Property Name="nThru_date_interval" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="cInverse_julian" Type="char" MaxLength="8" />
+          <Property Name="lActive" Type="bit" />
+          <Property Name="nOld_route" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="cOld_day" Type="char" MaxLength="2" />
+          <Property Name="tTime_stamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dComment_Type_Setup">
+          <Key>
+            <PropertyRef Name="cID" />
+          </Key>
+          <Property Name="cID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cDescript" Type="char" MaxLength="30" />
+          <Property Name="lPin_note" Type="bit" />
+          <Property Name="lStatement" Type="bit" />
+          <Property Name="lRoute" Type="bit" />
+          <Property Name="lComment_required" Type="bit" />
+          <Property Name="cImage_ID" Type="char" MaxLength="14" />
+          <Property Name="cAuto_link_entity" Type="char" MaxLength="1" />
+          <Property Name="mPredefined" Type="text" />
+          <Property Name="nThru_date_interval" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="tTime_stamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dCustomer">
+          <Key>
+            <PropertyRef Name="cAccount" />
+          </Key>
+          <Property Name="cAccount" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="cOld_Account" Type="char" MaxLength="8" />
+          <Property Name="lMaster_billing" Type="bit" />
+          <Property Name="cBill_account" Type="char" MaxLength="10" />
+          <Property Name="cUser_num" Type="char" MaxLength="40" />
+          <Property Name="cName" Type="char" MaxLength="40" />
+          <Property Name="cName_2" Type="char" MaxLength="40" />
+          <Property Name="cAddress_1" Type="char" MaxLength="40" />
+          <Property Name="cAddress_2" Type="char" MaxLength="40" />
+          <Property Name="cCity" Type="char" MaxLength="40" />
+          <Property Name="cState" Type="char" MaxLength="3" />
+          <Property Name="cZip" Type="char" MaxLength="10" />
+          <Property Name="dZip_date" Type="datetime" />
+          <Property Name="cZip_barcode" Type="char" MaxLength="12" />
+          <Property Name="cCarrier_rt" Type="char" MaxLength="4" />
+          <Property Name="cPhone" Type="char" MaxLength="18" />
+          <Property Name="cFax" Type="char" MaxLength="35" />
+          <Property Name="cContact" Type="char" MaxLength="40" />
+          <Property Name="cE_mail" Type="char" MaxLength="50" />
+          <Property Name="cSite_name" Type="char" MaxLength="40" />
+          <Property Name="cSite_street_number" Type="char" MaxLength="9" />
+          <Property Name="cSite_street_name" Type="char" MaxLength="40" />
+          <Property Name="cSite_street_suffix" Type="char" MaxLength="10" />
+          <Property Name="cSite_address" Type="char" MaxLength="60" />
+          <Property Name="cSite_city" Type="char" MaxLength="40" />
+          <Property Name="cSite_state" Type="char" MaxLength="3" />
+          <Property Name="cSite_zip" Type="char" MaxLength="10" />
+          <Property Name="cSite_phone" Type="char" MaxLength="18" />
+          <Property Name="cSite_fax" Type="char" MaxLength="35" />
+          <Property Name="cSite_contact" Type="char" MaxLength="40" />
+          <Property Name="cSite_e_mail" Type="char" MaxLength="50" />
+          <Property Name="cArea_ID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cType_ID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cCycle_ID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cTax_Table_ID" Type="char" MaxLength="14" />
+          <Property Name="cGroup_ID" Type="char" MaxLength="14" />
+          <Property Name="cSystem_ID" Type="char" MaxLength="14" />
+          <Property Name="cStatus_ID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cNew_status_ID" Type="char" MaxLength="14" />
+          <Property Name="dNew_status_date" Type="datetime" />
+          <Property Name="cIndex_type" Type="char" MaxLength="1" />
+          <Property Name="dStart" Type="datetime" />
+          <Property Name="dReview" Type="datetime" />
+          <Property Name="dSuspend" Type="datetime" />
+          <Property Name="dRestart" Type="datetime" />
+          <Property Name="dStop" Type="datetime" />
+          <Property Name="cRecycle" Type="char" MaxLength="7" />
+          <Property Name="cMap1" Type="char" MaxLength="3" />
+          <Property Name="cMap2" Type="char" MaxLength="3" />
+          <Property Name="cMap3" Type="char" MaxLength="3" />
+          <Property Name="cGeocode" Type="char" MaxLength="20" />
+          <Property Name="cLongitude" Type="char" MaxLength="13" />
+          <Property Name="cLatitude" Type="char" MaxLength="13" />
+          <Property Name="cMap_other" Type="char" MaxLength="13" />
+          <Property Name="nUnbilled" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nCurrent" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nThirty" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nSixty" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nNinety" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nOne_twenty" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nBalance" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nLate_charg" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="cLate_start" Type="char" MaxLength="2" />
+          <Property Name="nLast_l_chg" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nComputd_on" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="dLast_late_charge_date" Type="datetime" />
+          <Property Name="cNotice_start" Type="char" MaxLength="2" />
+          <Property Name="nLast_notic" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="dLast_notice_date" Type="datetime" />
+          <Property Name="nLast_paid" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="dDate_paid" Type="datetime" />
+          <Property Name="cPurchase_order" Type="char" MaxLength="20" />
+          <Property Name="dPo_expires" Type="datetime" />
+          <Property Name="nCr_limit" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nDeposit" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="dDepos_date" Type="datetime" />
+          <Property Name="lContract_required" Type="bit" />
+          <Property Name="lBank_eft" Type="bit" />
+          <Property Name="cBank_ID" Type="char" MaxLength="14" />
+          <Property Name="cBank_acct" Type="char" MaxLength="15" />
+          <Property Name="cBank_drawr" Type="char" MaxLength="40" />
+          <Property Name="cCurrent_invoice" Type="char" MaxLength="8" />
+          <Property Name="cChanges" Type="char" MaxLength="1" />
+          <Property Name="cUser_1" Type="char" MaxLength="30" />
+          <Property Name="cUser_2" Type="char" MaxLength="30" />
+          <Property Name="cUser_3" Type="char" MaxLength="30" />
+          <Property Name="cUser_4" Type="char" MaxLength="30" />
+          <Property Name="cUser_5" Type="char" MaxLength="30" />
+          <Property Name="nInvoices" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="nComments" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="nServicelinks" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="nCharges" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="nRoutes" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="nContainers" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="nContracts" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="nWorkorders" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="lRequires_financial_approval" Type="bit" />
+          <Property Name="lRequires_operations_approval" Type="bit" />
+          <Property Name="dLast_servc" Type="datetime" />
+          <Property Name="cProrate_type" Type="char" MaxLength="10" />
+          <Property Name="dProrate_date" Type="datetime" />
+          <Property Name="tTime_stamp" Type="datetime" />
+          <Property Name="cSite_ID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cCell_Phone" Type="char" MaxLength="18" />
+          <Property Name="cSite_Cell_Phone" Type="char" MaxLength="18" />
+          <Property Name="lEmail_Statement" Type="bit" />
+          <Property Name="lEmail_Only_Statement" Type="bit" />
+        </EntityType>
+        <EntityType Name="dOVP_LOOKUPRole">
+          <Key>
+            <PropertyRef Name="LOOKUPRoleID" />
+          </Key>
+          <Property Name="LOOKUPRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="100" />
+          <Property Name="RoleDescription" Type="varchar" MaxLength="500" />
+          <Property Name="RowCreatedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="datetime" />
+          <Property Name="RowModifiedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dOVP_Message">
+          <Key>
+            <PropertyRef Name="cMessageID" />
+          </Key>
+          <Property Name="cMessageID" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="cAccount" Type="varchar" MaxLength="14" />
+          <Property Name="cArea_ID" Type="varchar" MaxLength="14" />
+          <Property Name="cSubject" Type="varchar" MaxLength="25" />
+          <Property Name="cMessage" Type="text" />
+          <Property Name="dDate" Type="date" />
+        </EntityType>
+        <EntityType Name="dOVP_Services">
+          <Key>
+            <PropertyRef Name="ServID" />
+          </Key>
+          <Property Name="ServID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServTitle" Type="varchar" MaxLength="255" />
+          <Property Name="ServDescription" Type="varchar" MaxLength="255" />
+          <Property Name="ServType" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="dOVP_SYSUser">
+          <Key>
+            <PropertyRef Name="SYSUserID" />
+          </Key>
+          <Property Name="SYSUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordEncryptedText" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RowCreatedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="datetime" />
+          <Property Name="RowModifiedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="datetime" />
+          <Property Name="lConfirmedEmail" Type="bit" Nullable="false" />
+          <Property Name="cEmail" Type="varchar" MaxLength="50" />
+          <Property Name="cAccount" Type="varchar" MaxLength="10" />
+          <Property Name="cEncrytedToken" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dOVP_SYSUserProfile">
+          <Key>
+            <PropertyRef Name="SYSUserProfileID" />
+          </Key>
+          <Property Name="SYSUserProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SYSUserID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RowCreatedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="datetime" />
+          <Property Name="RowModifiedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dOVP_SYSUserRole">
+          <Key>
+            <PropertyRef Name="SYSUserRoleID" />
+          </Key>
+          <Property Name="SYSUserRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SYSUserID" Type="int" Nullable="false" />
+          <Property Name="LOOKUPRoleID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="RowCreatedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="datetime" />
+          <Property Name="RowModifiedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dRoute">
+          <Key>
+            <PropertyRef Name="cID" />
+          </Key>
+          <Property Name="cID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cAccount" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="cRoute_ID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="nSequence" Type="decimal" Precision="9" Scale="4" />
+          <Property Name="dStart_date" Type="datetime" />
+          <Property Name="dStop_date" Type="datetime" />
+          <Property Name="cRoute_Cycle_ID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="lActive" Type="bit" />
+          <Property Name="cLink_ID" Type="char" MaxLength="14" />
+          <Property Name="tTime_stamp" Type="datetime" />
+          <Property Name="cAlt_Route_ID" Type="char" MaxLength="14" />
+          <Property Name="nAlt_Sequence" Type="decimal" Precision="9" Scale="4" />
+          <Property Name="cBearing" Type="char" MaxLength="3" />
+          <Property Name="cGeo_Index" Type="char" MaxLength="20" />
+          <Property Name="cLatitude" Type="char" MaxLength="13" />
+          <Property Name="cLongitude" Type="char" MaxLength="13" />
+          <Property Name="cOnRoute_1" Type="char" MaxLength="1" />
+          <Property Name="cOnRoute_2" Type="char" MaxLength="1" />
+          <Property Name="cService_Window_1_Start_Time" Type="char" MaxLength="8" />
+          <Property Name="cService_Window_1_End_Time" Type="char" MaxLength="8" />
+          <Property Name="cService_Window_2_Start_Time" Type="char" MaxLength="8" />
+          <Property Name="cService_Window_2_End_Time" Type="char" MaxLength="8" />
+          <Property Name="cService_No_Service_Start_Time" Type="char" MaxLength="8" />
+          <Property Name="cService_No_Service_End_Time" Type="char" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="dRoute_Cycle_Date">
+          <Key>
+            <PropertyRef Name="cRoute_Cycle_ID" />
+            <PropertyRef Name="dDate" />
+          </Key>
+          <Property Name="cRoute_Cycle_ID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="dDate" Type="datetime" Nullable="false" />
+          <Property Name="tTime_stamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dTray">
+          <Key>
+            <PropertyRef Name="cID" />
+          </Key>
+          <Property Name="cID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cTray_ID" Type="char" MaxLength="14" />
+          <Property Name="lSend" Type="bit" />
+          <Property Name="lPriority" Type="bit" />
+          <Property Name="lAuto_show" Type="bit" />
+          <Property Name="lComplete" Type="bit" />
+          <Property Name="dCreate_date" Type="datetime" />
+          <Property Name="cCreate_time" Type="char" MaxLength="8" />
+          <Property Name="dSend_date" Type="datetime" />
+          <Property Name="cSend_time" Type="char" MaxLength="8" />
+          <Property Name="dSchedule_date" Type="datetime" />
+          <Property Name="cSchedule_time" Type="char" MaxLength="8" />
+          <Property Name="dComplete_date" Type="datetime" />
+          <Property Name="cComplete_time" Type="char" MaxLength="8" />
+          <Property Name="cFrom_user_id" Type="char" MaxLength="10" />
+          <Property Name="cTo_Tray_ID" Type="char" MaxLength="14" />
+          <Property Name="cSend_Tray_ID" Type="char" MaxLength="14" />
+          <Property Name="cAccount" Type="char" MaxLength="10" />
+          <Property Name="cEntity_id" Type="char" MaxLength="14" />
+          <Property Name="cSource_ID" Type="char" MaxLength="14" />
+          <Property Name="lForward_email" Type="bit" />
+          <Property Name="cSubject" Type="char" MaxLength="50" />
+          <Property Name="mComment" Type="text" />
+          <Property Name="tTime_stamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dWorkOrder">
+          <Key>
+            <PropertyRef Name="cWorkorder" />
+          </Key>
+          <Property Name="lSelected" Type="bit" />
+          <Property Name="cSelected_user" Type="char" MaxLength="10" />
+          <Property Name="cAccount" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="cSite_name" Type="char" MaxLength="40" />
+          <Property Name="cSite_address" Type="char" MaxLength="60" />
+          <Property Name="dSchd_dt" Type="datetime" />
+          <Property Name="cSchd_time" Type="char" MaxLength="8" />
+          <Property Name="cWorkorder" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cWorkorder_Type" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cLevel" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="cDepartment_ID" Type="char" MaxLength="14" />
+          <Property Name="cService_description" Type="char" MaxLength="35" />
+          <Property Name="cContract_ID" Type="char" MaxLength="14" />
+          <Property Name="cPurchase_order" Type="char" MaxLength="20" />
+          <Property Name="cInvoice" Type="char" MaxLength="10" />
+          <Property Name="cUser_cod" Type="char" MaxLength="2" />
+          <Property Name="lPrinted" Type="bit" />
+          <Property Name="lRequired_check_passed" Type="bit" />
+          <Property Name="lCompleted" Type="bit" />
+          <Property Name="cAcct_Route_ID" Type="char" MaxLength="14" />
+          <Property Name="cRoute_ID" Type="char" MaxLength="14" />
+          <Property Name="cTransporter_ID" Type="char" MaxLength="14" />
+          <Property Name="cVehicle_ID" Type="char" MaxLength="14" />
+          <Property Name="nOdom_out" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="nOdom_in" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="cReceiver_ID" Type="char" MaxLength="14" />
+          <Property Name="cDocket_ID" Type="char" MaxLength="14" />
+          <Property Name="nVolume" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="cUnit_Of_Measure_ID" Type="char" MaxLength="14" />
+          <Property Name="nLf_cost" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="dCritical_date" Type="datetime" />
+          <Property Name="cCritical_start_time" Type="char" MaxLength="8" />
+          <Property Name="cCritical_end_time" Type="char" MaxLength="8" />
+          <Property Name="nCritical_duration" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="nTotal_cost" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nTotal_revenue" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nProfit" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="lBatch_created" Type="bit" />
+          <Property Name="nSequence" Type="decimal" Precision="9" Scale="4" />
+          <Property Name="cCroute_fk" Type="char" MaxLength="14" />
+          <Property Name="tTime_stamp" Type="datetime" />
+          <Property Name="cCanceled_Level" Type="char" MaxLength="2" />
+          <Property Name="cWO_User_Character_1" Type="char" MaxLength="40" />
+          <Property Name="cWO_User_Character_2" Type="char" MaxLength="40" />
+          <Property Name="cWO_User_Character_3" Type="char" MaxLength="40" />
+          <Property Name="lWO_User_Checkbox_1" Type="bit" />
+          <Property Name="lWO_User_Checkbox_2" Type="bit" />
+          <Property Name="lWO_User_Checkbox_3" Type="bit" />
+          <Property Name="dWO_User_Date_1" Type="datetime" />
+          <Property Name="dWO_User_Date_2" Type="datetime" />
+          <Property Name="dWO_User_Date_3" Type="datetime" />
+          <Property Name="nWO_User_Number_1" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nWO_User_Number_2" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nWO_User_Number_3" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="mWO_User_Memo_1" Type="text" />
+          <Property Name="mWO_User_Memo_2" Type="text" />
+          <Property Name="mWO_User_Memo_3" Type="text" />
+          <Property Name="nDuration" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="cInterval_ID" Type="char" MaxLength="14" />
+          <Property Name="cSeries_ID" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="dWorkorder_Charge">
+          <Key>
+            <PropertyRef Name="cID" />
+          </Key>
+          <Property Name="cID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cWorkorder" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cContract_ID" Type="char" MaxLength="14" />
+          <Property Name="cCharge_ID" Type="char" MaxLength="14" />
+          <Property Name="cContract_Charge_ID" Type="char" MaxLength="14" />
+          <Property Name="nOrder" Type="decimal" Precision="2" Scale="0" />
+          <Property Name="lRental" Type="bit" />
+          <Property Name="lActive" Type="bit" />
+          <Property Name="cCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="cDescript" Type="char" MaxLength="35" />
+          <Property Name="nUnits" Type="decimal" Precision="9" Scale="3" />
+          <Property Name="nOverride" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="cReference" Type="char" MaxLength="20" />
+          <Property Name="nVolume" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="mComment" Type="text" />
+          <Property Name="nCost" Type="decimal" Precision="12" Scale="3" />
+          <Property Name="nBatch" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="nEntry" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="tTime_stamp" Type="datetime" />
+          <Property Name="cBatch_ID" Type="char" MaxLength="14" />
+        </EntityType>
+        <EntityType Name="dWorkorder_Comment">
+          <Key>
+            <PropertyRef Name="cID" />
+          </Key>
+          <Property Name="cID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cWorkorder" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cContract_ID" Type="char" MaxLength="14" />
+          <Property Name="cComment_ID" Type="char" MaxLength="14" />
+          <Property Name="lCreate_comment" Type="bit" />
+          <Property Name="nOrder" Type="decimal" Precision="2" Scale="0" />
+          <Property Name="cComment_Type_ID" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="mComment" Type="text" />
+          <Property Name="cCreated_Comment_ID" Type="char" MaxLength="14" />
+          <Property Name="cWorkorder_Setup_ID" Type="char" MaxLength="14" />
+          <Property Name="lProcessed" Type="bit" />
+          <Property Name="tTime_stamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dWorkorder_Setup">
+          <Key>
+            <PropertyRef Name="cWorkorder_Type" />
+            <PropertyRef Name="cLevel" />
+          </Key>
+          <Property Name="cWorkorder_Type" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="cLevel" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="cDepartment_ID" Type="char" MaxLength="14" />
+          <Property Name="cTray_ID" Type="char" MaxLength="14" />
+          <Property Name="cDescript" Type="char" MaxLength="25" />
+          <Property Name="cService_description" Type="char" MaxLength="25" />
+          <Property Name="cSend_Back_Level" Type="char" MaxLength="2" />
+          <Property Name="lOn_call" Type="bit" />
+          <Property Name="lCheck_Inactive_Delete" Type="bit" />
+          <Property Name="cAuto_route" Type="char" MaxLength="1" />
+          <Property Name="lAuto_dspch" Type="bit" />
+          <Property Name="lCreate_onetime_sequence" Type="bit" />
+          <Property Name="lPrint" Type="bit" />
+          <Property Name="cPrint_to" Type="char" MaxLength="40" />
+          <Property Name="lProcess" Type="bit" />
+          <Property Name="lLast_level" Type="bit" />
+          <Property Name="lRequired_view" Type="bit" />
+          <Property Name="lCheck_required_on_save" Type="bit" />
+          <Property Name="lLog_save" Type="bit" />
+          <Property Name="lCopy_Service_Code_Comment" Type="bit" />
+          <Property Name="lCheck_required" Type="bit" />
+          <Property Name="lCheck_charge_required" Type="bit" />
+          <Property Name="lCheck_comment_required" Type="bit" />
+          <Property Name="lCheck_container_required" Type="bit" />
+          <Property Name="lCheck_datetime_required" Type="bit" />
+          <Property Name="lCheck_content_required" Type="bit" />
+          <Property Name="lTransport_tab" Type="bit" />
+          <Property Name="lFinancial_tab" Type="bit" />
+          <Property Name="cCharge_tab" Type="char" MaxLength="1" />
+          <Property Name="cContainer_tab" Type="char" MaxLength="1" />
+          <Property Name="cComment_tab" Type="char" MaxLength="1" />
+          <Property Name="cDate_tab" Type="char" MaxLength="1" />
+          <Property Name="cContent_tab" Type="char" MaxLength="1" />
+          <Property Name="lUser_tab" Type="bit" />
+          <Property Name="lLandfill_tab" Type="bit" />
+          <Property Name="nStart_tab" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="e_caccount" Type="char" MaxLength="1" />
+          <Property Name="E_CSITE_NAME" Type="char" MaxLength="1" />
+          <Property Name="E_CSITE_ADDRESS" Type="char" MaxLength="1" />
+          <Property Name="E_CWORKORDER" Type="char" MaxLength="1" />
+          <Property Name="E_CWORKORDER_TYPE" Type="char" MaxLength="1" />
+          <Property Name="E_CLEVEL" Type="char" MaxLength="1" />
+          <Property Name="E_CDEPARTMENT_ID" Type="char" MaxLength="1" />
+          <Property Name="E_CSERVICE_DESCRIPTION" Type="char" MaxLength="1" />
+          <Property Name="E_DSCHD_DT" Type="char" MaxLength="1" />
+          <Property Name="E_CSCHD_TIME" Type="char" MaxLength="1" />
+          <Property Name="E_CCONTRACT_ID" Type="char" MaxLength="1" />
+          <Property Name="E_CPURCHASE_ORDER" Type="char" MaxLength="1" />
+          <Property Name="E_CINVOICE" Type="char" MaxLength="1" />
+          <Property Name="E_CUSER_COD" Type="char" MaxLength="1" />
+          <Property Name="cE_acct_day" Type="char" MaxLength="1" />
+          <Property Name="E_CACCT_ROUTE_ID" Type="char" MaxLength="1" />
+          <Property Name="cE_day" Type="char" MaxLength="1" />
+          <Property Name="E_CROUTE_ID" Type="char" MaxLength="1" />
+          <Property Name="E_CTRANSPORTER_ID" Type="char" MaxLength="1" />
+          <Property Name="E_CVEHICLE_ID" Type="char" MaxLength="1" />
+          <Property Name="E_NODOM_OUT" Type="char" MaxLength="1" />
+          <Property Name="E_NODOM_IN" Type="char" MaxLength="1" />
+          <Property Name="lUpdate_container_on_advance" Type="bit" />
+          <Property Name="cDel_rmv_ct" Type="char" MaxLength="1" />
+          <Property Name="cDisp_code" Type="char" MaxLength="6" />
+          <Property Name="E_CRECEIVER_ID" Type="char" MaxLength="1" />
+          <Property Name="E_CDOCKET_ID" Type="char" MaxLength="1" />
+          <Property Name="E_NVOLUME" Type="char" MaxLength="1" />
+          <Property Name="E_CMEASURE" Type="char" MaxLength="1" />
+          <Property Name="E_NLF_COST" Type="char" MaxLength="1" />
+          <Property Name="cImage_ID" Type="char" MaxLength="14" />
+          <Property Name="tTime_stamp" Type="datetime" />
+          <Property Name="cCancel_Level" Type="char" MaxLength="2" />
+          <Property Name="e_cCanceled_Level" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Character_1" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Character_2" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Character_3" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Checkbox_1" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Checkbox_2" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Checkbox_3" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Date_1" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Date_2" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Date_3" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Number_1" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Number_2" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Number_3" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Memo_1" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Memo_2" Type="char" MaxLength="1" />
+          <Property Name="e_cWO_User_Memo_3" Type="char" MaxLength="1" />
+          <Property Name="lProcess_Post_Charge" Type="bit" />
+          <Property Name="lProcess_Post_Landfill_Charge" Type="bit" />
+          <Property Name="lProcess_Move_Container" Type="bit" />
+          <Property Name="lProcess_Create_Comment" Type="bit" />
+          <Property Name="lProcess_Create_Docket" Type="bit" />
+          <Property Name="e_cDuration" Type="char" MaxLength="1" />
+          <Property Name="lPlanner_Bell" Type="bit" />
+          <Property Name="lPlanner_House" Type="bit" />
+          <Property Name="lPlanner_Key" Type="bit" />
+          <Property Name="lPlanner_Question" Type="bit" />
+        </EntityType>
+        <Association Name="FK__dOVP_SYSU__LOOKU__534E2C48">
+          <End Role="dOVP_LOOKUPRole" Type="Self.dOVP_LOOKUPRole" Multiplicity="1" />
+          <End Role="dOVP_SYSUserRole" Type="Self.dOVP_SYSUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dOVP_LOOKUPRole">
+              <PropertyRef Name="LOOKUPRoleID" />
+            </Principal>
+            <Dependent Role="dOVP_SYSUserRole">
+              <PropertyRef Name="LOOKUPRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dOVP_SYSU__SYSUs__4D9552F2">
+          <End Role="dOVP_SYSUser" Type="Self.dOVP_SYSUser" Multiplicity="1" />
+          <End Role="dOVP_SYSUserProfile" Type="Self.dOVP_SYSUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dOVP_SYSUser">
+              <PropertyRef Name="SYSUserID" />
+            </Principal>
+            <Dependent Role="dOVP_SYSUserProfile">
+              <PropertyRef Name="SYSUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dOVP_SYSU__SYSUs__54425081">
+          <End Role="dOVP_SYSUser" Type="Self.dOVP_SYSUser" Multiplicity="1" />
+          <End Role="dOVP_SYSUserRole" Type="Self.dOVP_SYSUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dOVP_SYSUser">
+              <PropertyRef Name="SYSUserID" />
+            </Principal>
+            <Dependent Role="dOVP_SYSUserRole">
+              <PropertyRef Name="SYSUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="VrpGetNextID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KeyID" Type="char" Mode="In" />
+          <Parameter Name="KeyTableName" Type="char" Mode="In" />
+          <Parameter Name="IncrementValue" Type="decimal" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="dCharge" EntityType="Self.dCharge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dCode" EntityType="Self.dCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dComment" EntityType="Self.dComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dComment_Type_Setup" EntityType="Self.dComment_Type_Setup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dCustomer" EntityType="Self.dCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dOVP_LOOKUPRole" EntityType="Self.dOVP_LOOKUPRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dOVP_Message" EntityType="Self.dOVP_Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dOVP_Services" EntityType="Self.dOVP_Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dOVP_SYSUser" EntityType="Self.dOVP_SYSUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dOVP_SYSUserProfile" EntityType="Self.dOVP_SYSUserProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dOVP_SYSUserRole" EntityType="Self.dOVP_SYSUserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dRoute" EntityType="Self.dRoute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dRoute_Cycle_Date" EntityType="Self.dRoute_Cycle_Date" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dTray" EntityType="Self.dTray" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dWorkOrder" EntityType="Self.dWorkOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dWorkorder_Charge" EntityType="Self.dWorkorder_Charge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dWorkorder_Comment" EntityType="Self.dWorkorder_Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dWorkorder_Setup" EntityType="Self.dWorkorder_Setup" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__dOVP_SYSU__LOOKU__534E2C48" Association="Self.FK__dOVP_SYSU__LOOKU__534E2C48">
+            <End Role="dOVP_LOOKUPRole" EntitySet="dOVP_LOOKUPRole" />
+            <End Role="dOVP_SYSUserRole" EntitySet="dOVP_SYSUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dOVP_SYSU__SYSUs__4D9552F2" Association="Self.FK__dOVP_SYSU__SYSUs__4D9552F2">
+            <End Role="dOVP_SYSUser" EntitySet="dOVP_SYSUser" />
+            <End Role="dOVP_SYSUserProfile" EntitySet="dOVP_SYSUserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dOVP_SYSU__SYSUs__54425081" Association="Self.FK__dOVP_SYSU__SYSUs__54425081">
+            <End Role="dOVP_SYSUser" EntitySet="dOVP_SYSUser" />
+            <End Role="dOVP_SYSUserRole" EntitySet="dOVP_SYSUserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="dCustomer">
+          <Key>
+            <PropertyRef Name="cAccount" />
+          </Key>
+          <Property Name="cAccount" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cOld_Account" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="lMaster_billing" Type="Boolean" />
+          <Property Name="cBill_account" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cUser_num" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cName" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cName_2" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cAddress_1" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cAddress_2" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cCity" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cState" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cZip" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="dZip_date" Type="DateTime" Precision="3" />
+          <Property Name="cZip_barcode" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="cCarrier_rt" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="cPhone" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="cFax" Type="String" MaxLength="35" FixedLength="true" Unicode="false" />
+          <Property Name="cContact" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cE_mail" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_name" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_street_number" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_street_name" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_street_suffix" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_address" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_city" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_state" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_zip" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_phone" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_fax" Type="String" MaxLength="35" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_contact" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_e_mail" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="cArea_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cType_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cCycle_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cTax_Table_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cGroup_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cSystem_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cStatus_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cNew_status_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="dNew_status_date" Type="DateTime" Precision="3" />
+          <Property Name="cIndex_type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dStart" Type="DateTime" Precision="3" />
+          <Property Name="dReview" Type="DateTime" Precision="3" />
+          <Property Name="dSuspend" Type="DateTime" Precision="3" />
+          <Property Name="dRestart" Type="DateTime" Precision="3" />
+          <Property Name="dStop" Type="DateTime" Precision="3" />
+          <Property Name="cRecycle" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="cMap1" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cMap2" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cMap3" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cGeocode" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cLongitude" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="cLatitude" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="cMap_other" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="nUnbilled" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nCurrent" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nThirty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nSixty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nNinety" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nOne_twenty" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nBalance" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nLate_charg" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="cLate_start" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="nLast_l_chg" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nComputd_on" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="dLast_late_charge_date" Type="DateTime" Precision="3" />
+          <Property Name="cNotice_start" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="nLast_notic" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="dLast_notice_date" Type="DateTime" Precision="3" />
+          <Property Name="nLast_paid" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="dDate_paid" Type="DateTime" Precision="3" />
+          <Property Name="cPurchase_order" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="dPo_expires" Type="DateTime" Precision="3" />
+          <Property Name="nCr_limit" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nDeposit" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="dDepos_date" Type="DateTime" Precision="3" />
+          <Property Name="lContract_required" Type="Boolean" />
+          <Property Name="lBank_eft" Type="Boolean" />
+          <Property Name="cBank_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cBank_acct" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cBank_drawr" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cCurrent_invoice" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cChanges" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cUser_1" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="cUser_2" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="cUser_3" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="cUser_4" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="cUser_5" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="nInvoices" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="nComments" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="nServicelinks" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="nCharges" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="nRoutes" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="nContainers" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="nContracts" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="nWorkorders" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="lRequires_financial_approval" Type="Boolean" />
+          <Property Name="lRequires_operations_approval" Type="Boolean" />
+          <Property Name="dLast_servc" Type="DateTime" Precision="3" />
+          <Property Name="cProrate_type" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="dProrate_date" Type="DateTime" Precision="3" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+          <Property Name="cSite_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cCell_Phone" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_Cell_Phone" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="lEmail_Statement" Type="Boolean" />
+          <Property Name="lEmail_Only_Statement" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="dTray">
+          <Key>
+            <PropertyRef Name="cID" />
+          </Key>
+          <Property Name="cID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cTray_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="lSend" Type="Boolean" />
+          <Property Name="lPriority" Type="Boolean" />
+          <Property Name="lAuto_show" Type="Boolean" />
+          <Property Name="lComplete" Type="Boolean" />
+          <Property Name="dCreate_date" Type="DateTime" Precision="3" />
+          <Property Name="cCreate_time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="dSend_date" Type="DateTime" Precision="3" />
+          <Property Name="cSend_time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="dSchedule_date" Type="DateTime" Precision="3" />
+          <Property Name="cSchedule_time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="dComplete_date" Type="DateTime" Precision="3" />
+          <Property Name="cComplete_time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cFrom_user_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cTo_Tray_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cSend_Tray_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cAccount" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cEntity_id" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cSource_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="lForward_email" Type="Boolean" />
+          <Property Name="cSubject" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="mComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dCustomer" EntityType="Self.dCustomer" />
+          <EntitySet Name="dTray" EntityType="Self.dTray" />
+          <EntitySet Name="dWorkOrder" EntityType="Model.dWorkOrder" />
+          <EntitySet Name="dWorkorder_Charge" EntityType="Model.dWorkorder_Charge" />
+          <EntitySet Name="dWorkorder_Comment" EntityType="Model.dWorkorder_Comment" />
+          <EntitySet Name="dWorkorder_Setup" EntityType="Model.dWorkorder_Setup" />
+          <EntitySet Name="dCharge" EntityType="Model.dCharge" />
+          <EntitySet Name="dCode" EntityType="Model.dCode" />
+          <EntitySet Name="dOVP_Message" EntityType="Model.dOVP_Message" />
+          <EntitySet Name="dComment" EntityType="Model.dComment" />
+          <EntitySet Name="dComment_Type_Setup" EntityType="Model.dComment_Type_Setup" />
+          <EntitySet Name="dOVP_LOOKUPRole" EntityType="Model.dOVP_LOOKUPRole" />
+          <EntitySet Name="dOVP_SYSUser" EntityType="Model.dOVP_SYSUser" />
+          <EntitySet Name="dOVP_SYSUserProfile" EntityType="Model.dOVP_SYSUserProfile" />
+          <EntitySet Name="dOVP_SYSUserRole" EntityType="Model.dOVP_SYSUserRole" />
+          <AssociationSet Name="FK__dOVP_SYSU__LOOKU__534E2C48" Association="Model.FK__dOVP_SYSU__LOOKU__534E2C48">
+            <End Role="dOVP_LOOKUPRole" EntitySet="dOVP_LOOKUPRole" />
+            <End Role="dOVP_SYSUserRole" EntitySet="dOVP_SYSUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dOVP_SYSU__SYSUs__4D9552F2" Association="Model.FK__dOVP_SYSU__SYSUs__4D9552F2">
+            <End Role="dOVP_SYSUser" EntitySet="dOVP_SYSUser" />
+            <End Role="dOVP_SYSUserProfile" EntitySet="dOVP_SYSUserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dOVP_SYSU__SYSUs__54425081" Association="Model.FK__dOVP_SYSU__SYSUs__54425081">
+            <End Role="dOVP_SYSUser" EntitySet="dOVP_SYSUser" />
+            <End Role="dOVP_SYSUserRole" EntitySet="dOVP_SYSUserRole" />
+          </AssociationSet>
+          <EntitySet Name="dRoute" EntityType="Model.dRoute" />
+          <EntitySet Name="dRoute_Cycle_Date" EntityType="Model.dRoute_Cycle_Date" />
+          <FunctionImport Name="VrpGetNextID" ReturnType="Collection(Decimal)">
+            <Parameter Name="KeyID" Mode="In" Type="String" />
+            <Parameter Name="KeyTableName" Mode="In" Type="String" />
+            <Parameter Name="IncrementValue" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="dOVP_Services" EntityType="Model.dOVP_Services" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="dWorkOrder">
+          <Key>
+            <PropertyRef Name="cWorkorder" />
+          </Key>
+          <Property Name="lSelected" Type="Boolean" />
+          <Property Name="cSelected_user" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cAccount" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_name" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cSite_address" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
+          <Property Name="dSchd_dt" Type="DateTime" Precision="3" />
+          <Property Name="cSchd_time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cWorkorder" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cWorkorder_Type" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cLevel" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="cDepartment_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cService_description" Type="String" MaxLength="35" FixedLength="true" Unicode="false" />
+          <Property Name="cContract_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cPurchase_order" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cInvoice" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cUser_cod" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="lPrinted" Type="Boolean" />
+          <Property Name="lRequired_check_passed" Type="Boolean" />
+          <Property Name="lCompleted" Type="Boolean" />
+          <Property Name="cAcct_Route_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cRoute_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cTransporter_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cVehicle_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="nOdom_out" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="nOdom_in" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="cReceiver_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cDocket_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="nVolume" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="cUnit_Of_Measure_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="nLf_cost" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="dCritical_date" Type="DateTime" Precision="3" />
+          <Property Name="cCritical_start_time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cCritical_end_time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="nCritical_duration" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="nTotal_cost" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nTotal_revenue" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nProfit" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="lBatch_created" Type="Boolean" />
+          <Property Name="nSequence" Type="Decimal" Precision="9" Scale="4" />
+          <Property Name="cCroute_fk" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+          <Property Name="cCanceled_Level" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="cWO_User_Character_1" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cWO_User_Character_2" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="cWO_User_Character_3" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="lWO_User_Checkbox_1" Type="Boolean" />
+          <Property Name="lWO_User_Checkbox_2" Type="Boolean" />
+          <Property Name="lWO_User_Checkbox_3" Type="Boolean" />
+          <Property Name="dWO_User_Date_1" Type="DateTime" Precision="3" />
+          <Property Name="dWO_User_Date_2" Type="DateTime" Precision="3" />
+          <Property Name="dWO_User_Date_3" Type="DateTime" Precision="3" />
+          <Property Name="nWO_User_Number_1" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nWO_User_Number_2" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nWO_User_Number_3" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="mWO_User_Memo_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mWO_User_Memo_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mWO_User_Memo_3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nDuration" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="cInterval_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cSeries_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dWorkorder_Charge">
+          <Key>
+            <PropertyRef Name="cID" />
+          </Key>
+          <Property Name="cID" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cWorkorder" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cContract_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cCharge_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cContract_Charge_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="nOrder" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="lRental" Type="Boolean" />
+          <Property Name="lActive" Type="Boolean" />
+          <Property Name="cCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="cDescript" Type="String" MaxLength="35" FixedLength="true" Unicode="false" />
+          <Property Name="nUnits" Type="Decimal" Precision="9" Scale="3" />
+          <Property Name="nOverride" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="cReference" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="nVolume" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="mComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nCost" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nBatch" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="nEntry" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+          <Property Name="cBatch_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dWorkorder_Comment">
+          <Key>
+            <PropertyRef Name="cID" />
+          </Key>
+          <Property Name="cID" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cWorkorder" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cContract_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cComment_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="lCreate_comment" Type="Boolean" />
+          <Property Name="nOrder" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="cComment_Type_ID" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="mComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cCreated_Comment_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cWorkorder_Setup_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="lProcessed" Type="Boolean" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="dWorkorder_Setup">
+          <Key>
+            <PropertyRef Name="cWorkorder_Type" />
+            <PropertyRef Name="cLevel" />
+          </Key>
+          <Property Name="cWorkorder_Type" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cLevel" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="cDepartment_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cTray_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cDescript" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="cService_description" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="cSend_Back_Level" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="lOn_call" Type="Boolean" />
+          <Property Name="lCheck_Inactive_Delete" Type="Boolean" />
+          <Property Name="cAuto_route" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="lAuto_dspch" Type="Boolean" />
+          <Property Name="lCreate_onetime_sequence" Type="Boolean" />
+          <Property Name="lPrint" Type="Boolean" />
+          <Property Name="cPrint_to" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="lProcess" Type="Boolean" />
+          <Property Name="lLast_level" Type="Boolean" />
+          <Property Name="lRequired_view" Type="Boolean" />
+          <Property Name="lCheck_required_on_save" Type="Boolean" />
+          <Property Name="lLog_save" Type="Boolean" />
+          <Property Name="lCopy_Service_Code_Comment" Type="Boolean" />
+          <Property Name="lCheck_required" Type="Boolean" />
+          <Property Name="lCheck_charge_required" Type="Boolean" />
+          <Property Name="lCheck_comment_required" Type="Boolean" />
+          <Property Name="lCheck_container_required" Type="Boolean" />
+          <Property Name="lCheck_datetime_required" Type="Boolean" />
+          <Property Name="lCheck_content_required" Type="Boolean" />
+          <Property Name="lTransport_tab" Type="Boolean" />
+          <Property Name="lFinancial_tab" Type="Boolean" />
+          <Property Name="cCharge_tab" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cContainer_tab" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cComment_tab" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cDate_tab" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cContent_tab" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="lUser_tab" Type="Boolean" />
+          <Property Name="lLandfill_tab" Type="Boolean" />
+          <Property Name="nStart_tab" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="e_caccount" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CSITE_NAME" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CSITE_ADDRESS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CWORKORDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CWORKORDER_TYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CLEVEL" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CDEPARTMENT_ID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CSERVICE_DESCRIPTION" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_DSCHD_DT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CSCHD_TIME" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CCONTRACT_ID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CPURCHASE_ORDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CINVOICE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CUSER_COD" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cE_acct_day" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CACCT_ROUTE_ID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cE_day" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CROUTE_ID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CTRANSPORTER_ID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CVEHICLE_ID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_NODOM_OUT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_NODOM_IN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="lUpdate_container_on_advance" Type="Boolean" />
+          <Property Name="cDel_rmv_ct" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cDisp_code" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="E_CRECEIVER_ID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CDOCKET_ID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_NVOLUME" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_CMEASURE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="E_NLF_COST" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cImage_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+          <Property Name="cCancel_Level" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="e_cCanceled_Level" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Character_1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Character_2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Character_3" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Checkbox_1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Checkbox_2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Checkbox_3" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Date_1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Date_2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Date_3" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Number_1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Number_2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Number_3" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Memo_1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Memo_2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="e_cWO_User_Memo_3" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="lProcess_Post_Charge" Type="Boolean" />
+          <Property Name="lProcess_Post_Landfill_Charge" Type="Boolean" />
+          <Property Name="lProcess_Move_Container" Type="Boolean" />
+          <Property Name="lProcess_Create_Comment" Type="Boolean" />
+          <Property Name="lProcess_Create_Docket" Type="Boolean" />
+          <Property Name="e_cDuration" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="lPlanner_Bell" Type="Boolean" />
+          <Property Name="lPlanner_House" Type="Boolean" />
+          <Property Name="lPlanner_Key" Type="Boolean" />
+          <Property Name="lPlanner_Question" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition1_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams1_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="dCharge">
+          <Key>
+            <PropertyRef Name="cId" />
+          </Key>
+          <Property Name="cId" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cAccount" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cArea_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cCycle_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="cDescript" Type="String" MaxLength="35" FixedLength="true" Unicode="false" />
+          <Property Name="nUnits" Type="Decimal" Precision="9" Scale="3" />
+          <Property Name="nOverride" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="cReference" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="nFrequency" Type="Decimal" Precision="3" Scale="1" />
+          <Property Name="nDiscount" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="dLast_service" Type="DateTime" Precision="3" />
+          <Property Name="dNext_service" Type="DateTime" Precision="3" />
+          <Property Name="dStart_date" Type="DateTime" Precision="3" />
+          <Property Name="dReview_date" Type="DateTime" Precision="3" />
+          <Property Name="dLast_review_date" Type="DateTime" Precision="3" />
+          <Property Name="dApproved_date" Type="DateTime" Precision="3" />
+          <Property Name="cApproved_user" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="dStop_date" Type="DateTime" Precision="3" />
+          <Property Name="cStop_code_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cContract" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="nLinks" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="mComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cProrate_type" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="dProrate_date" Type="DateTime" Precision="3" />
+          <Property Name="lHistory" Type="Boolean" />
+          <Property Name="nOld_route" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="cOld_day" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="cOld_days" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="cOld_container" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+          <Property Name="nPrice_Per_Service" Type="Decimal" Precision="12" Scale="3" />
+        </EntityType>
+        <EntityType Name="dCode">
+          <Key>
+            <PropertyRef Name="cCode" />
+          </Key>
+          <Property Name="cCode" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="cDescript" Type="String" MaxLength="35" FixedLength="true" Unicode="false" />
+          <Property Name="cCategory_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="nUnit_price" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nFactor" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="cUnit_Of_Measure_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="lCredit" Type="Boolean" />
+          <Property Name="lSuspend" Type="Boolean" />
+          <Property Name="lContract_required" Type="Boolean" />
+          <Property Name="lService" Type="Boolean" />
+          <Property Name="lRental" Type="Boolean" />
+          <Property Name="lOnly_area_pricing" Type="Boolean" />
+          <Property Name="lAuto_copy_content_profile" Type="Boolean" />
+          <Property Name="lAccumulate_volume_stats" Type="Boolean" />
+          <Property Name="lUnits_required" Type="Boolean" />
+          <Property Name="lReference_required" Type="Boolean" />
+          <Property Name="lComment_required" Type="Boolean" />
+          <Property Name="lVolume_required" Type="Boolean" />
+          <Property Name="lCost_required" Type="Boolean" />
+          <Property Name="cGl_credit" Type="String" MaxLength="17" FixedLength="true" Unicode="false" />
+          <Property Name="cGl_debit" Type="String" MaxLength="17" FixedLength="true" Unicode="false" />
+          <Property Name="lIs_tax_code" Type="Boolean" />
+          <Property Name="lTax_1" Type="Boolean" />
+          <Property Name="lTax_2" Type="Boolean" />
+          <Property Name="lTax_3" Type="Boolean" />
+          <Property Name="lTax_4" Type="Boolean" />
+          <Property Name="lTax_5" Type="Boolean" />
+          <Property Name="cLink_type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cLink_code" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="nBreakpoint" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="cImage_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="mComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cReporting_Level_1" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cReporting_Level_2" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cReporting_Level_3" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+          <Property Name="nPrice_Per_Service" Type="Decimal" Precision="12" Scale="3" />
+          <Property Name="nPrice_Per_Service_Factor" Type="Decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="dOVP_Message">
+          <Key>
+            <PropertyRef Name="cMessageID" />
+          </Key>
+          <Property Name="cMessageID" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="cAccount" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="cArea_ID" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="cSubject" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="cMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="dComment">
+          <Key>
+            <PropertyRef Name="cId" />
+          </Key>
+          <Property Name="cId" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cAccount" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="dDate" Type="DateTime" Precision="3" />
+          <Property Name="dThru" Type="DateTime" Precision="3" />
+          <Property Name="cType_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="lPin_note" Type="Boolean" />
+          <Property Name="lStatement" Type="Boolean" />
+          <Property Name="lRoute" Type="Boolean" />
+          <Property Name="mComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nThru_date_interval" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="cInverse_julian" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="lActive" Type="Boolean" />
+          <Property Name="nOld_route" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="cOld_day" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="dComment_Type_Setup">
+          <Key>
+            <PropertyRef Name="cID" />
+          </Key>
+          <Property Name="cID" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cDescript" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="lPin_note" Type="Boolean" />
+          <Property Name="lStatement" Type="Boolean" />
+          <Property Name="lRoute" Type="Boolean" />
+          <Property Name="lComment_required" Type="Boolean" />
+          <Property Name="cImage_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cAuto_link_entity" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="mPredefined" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nThru_date_interval" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="dOVP_LOOKUPRole">
+          <Key>
+            <PropertyRef Name="LOOKUPRoleID" />
+          </Key>
+          <Property Name="LOOKUPRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RoleDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RowCreatedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="dOVP_SYSUserRole" Relationship="Model.FK__dOVP_SYSU__LOOKU__534E2C48" FromRole="dOVP_LOOKUPRole" ToRole="dOVP_SYSUserRole" />
+        </EntityType>
+        <EntityType Name="dOVP_SYSUser">
+          <Key>
+            <PropertyRef Name="SYSUserID" />
+          </Key>
+          <Property Name="SYSUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordEncryptedText" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RowCreatedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="lConfirmedEmail" Type="Boolean" Nullable="false" />
+          <Property Name="cEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dOVP_SYSUserProfile" Relationship="Model.FK__dOVP_SYSU__SYSUs__4D9552F2" FromRole="dOVP_SYSUser" ToRole="dOVP_SYSUserProfile" />
+          <NavigationProperty Name="dOVP_SYSUserRole" Relationship="Model.FK__dOVP_SYSU__SYSUs__54425081" FromRole="dOVP_SYSUser" ToRole="dOVP_SYSUserRole" />
+          <Property Name="cAccount" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="cEncrytedToken" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dOVP_SYSUserProfile">
+          <Key>
+            <PropertyRef Name="SYSUserProfileID" />
+          </Key>
+          <Property Name="SYSUserProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RowCreatedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="dOVP_SYSUser" Relationship="Model.FK__dOVP_SYSU__SYSUs__4D9552F2" FromRole="dOVP_SYSUserProfile" ToRole="dOVP_SYSUser" />
+        </EntityType>
+        <EntityType Name="dOVP_SYSUserRole">
+          <Key>
+            <PropertyRef Name="SYSUserRoleID" />
+          </Key>
+          <Property Name="SYSUserRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="LOOKUPRoleID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="RowCreatedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="dOVP_LOOKUPRole" Relationship="Model.FK__dOVP_SYSU__LOOKU__534E2C48" FromRole="dOVP_SYSUserRole" ToRole="dOVP_LOOKUPRole" />
+          <NavigationProperty Name="dOVP_SYSUser" Relationship="Model.FK__dOVP_SYSU__SYSUs__54425081" FromRole="dOVP_SYSUserRole" ToRole="dOVP_SYSUser" />
+        </EntityType>
+        <Association Name="FK__dOVP_SYSU__LOOKU__534E2C48">
+          <End Type="Model.dOVP_LOOKUPRole" Role="dOVP_LOOKUPRole" Multiplicity="1" />
+          <End Type="Model.dOVP_SYSUserRole" Role="dOVP_SYSUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dOVP_LOOKUPRole">
+              <PropertyRef Name="LOOKUPRoleID" />
+            </Principal>
+            <Dependent Role="dOVP_SYSUserRole">
+              <PropertyRef Name="LOOKUPRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dOVP_SYSU__SYSUs__4D9552F2">
+          <End Type="Model.dOVP_SYSUser" Role="dOVP_SYSUser" Multiplicity="1" />
+          <End Type="Model.dOVP_SYSUserProfile" Role="dOVP_SYSUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dOVP_SYSUser">
+              <PropertyRef Name="SYSUserID" />
+            </Principal>
+            <Dependent Role="dOVP_SYSUserProfile">
+              <PropertyRef Name="SYSUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dOVP_SYSU__SYSUs__54425081">
+          <End Type="Model.dOVP_SYSUser" Role="dOVP_SYSUser" Multiplicity="1" />
+          <End Type="Model.dOVP_SYSUserRole" Role="dOVP_SYSUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dOVP_SYSUser">
+              <PropertyRef Name="SYSUserID" />
+            </Principal>
+            <Dependent Role="dOVP_SYSUserRole">
+              <PropertyRef Name="SYSUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="dRoute">
+          <Key>
+            <PropertyRef Name="cID" />
+          </Key>
+          <Property Name="cID" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="cAccount" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cRoute_ID" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="nSequence" Type="Decimal" Precision="9" Scale="4" />
+          <Property Name="dStart_date" Type="DateTime" Precision="3" />
+          <Property Name="dStop_date" Type="DateTime" Precision="3" />
+          <Property Name="cRoute_Cycle_ID" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="lActive" Type="Boolean" />
+          <Property Name="cLink_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+          <Property Name="cAlt_Route_ID" Type="String" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="nAlt_Sequence" Type="Decimal" Precision="9" Scale="4" />
+          <Property Name="cBearing" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cGeo_Index" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cLatitude" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="cLongitude" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="cOnRoute_1" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cOnRoute_2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cService_Window_1_Start_Time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cService_Window_1_End_Time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cService_Window_2_Start_Time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cService_Window_2_End_Time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cService_No_Service_Start_Time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cService_No_Service_End_Time" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dRoute_Cycle_Date">
+          <Key>
+            <PropertyRef Name="cRoute_Cycle_ID" />
+            <PropertyRef Name="dDate" />
+          </Key>
+          <Property Name="cRoute_Cycle_ID" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="false" />
+          <Property Name="dDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tTime_stamp" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="dOVP_Services">
+          <Key>
+            <PropertyRef Name="ServID" />
+          </Key>
+          <Property Name="ServID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ServDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ServType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="dCustomer">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dCustomer)">
+        <MappingFragment StoreEntitySet="dCustomer">
+          <ScalarProperty Name="cAccount" ColumnName="cAccount" />
+          <ScalarProperty Name="cOld_Account" ColumnName="cOld_Account" />
+          <ScalarProperty Name="lMaster_billing" ColumnName="lMaster_billing" />
+          <ScalarProperty Name="cBill_account" ColumnName="cBill_account" />
+          <ScalarProperty Name="cUser_num" ColumnName="cUser_num" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+          <ScalarProperty Name="cName_2" ColumnName="cName_2" />
+          <ScalarProperty Name="cAddress_1" ColumnName="cAddress_1" />
+          <ScalarProperty Name="cAddress_2" ColumnName="cAddress_2" />
+          <ScalarProperty Name="cCity" ColumnName="cCity" />
+          <ScalarProperty Name="cState" ColumnName="cState" />
+          <ScalarProperty Name="cZip" ColumnName="cZip" />
+          <ScalarProperty Name="dZip_date" ColumnName="dZip_date" />
+          <ScalarProperty Name="cZip_barcode" ColumnName="cZip_barcode" />
+          <ScalarProperty Name="cCarrier_rt" ColumnName="cCarrier_rt" />
+          <ScalarProperty Name="cPhone" ColumnName="cPhone" />
+          <ScalarProperty Name="cFax" ColumnName="cFax" />
+          <ScalarProperty Name="cContact" ColumnName="cContact" />
+          <ScalarProperty Name="cE_mail" ColumnName="cE_mail" />
+          <ScalarProperty Name="cSite_name" ColumnName="cSite_name" />
+          <ScalarProperty Name="cSite_street_number" ColumnName="cSite_street_number" />
+          <ScalarProperty Name="cSite_street_name" ColumnName="cSite_street_name" />
+          <ScalarProperty Name="cSite_street_suffix" ColumnName="cSite_street_suffix" />
+          <ScalarProperty Name="cSite_address" ColumnName="cSite_address" />
+          <ScalarProperty Name="cSite_city" ColumnName="cSite_city" />
+          <ScalarProperty Name="cSite_state" ColumnName="cSite_state" />
+          <ScalarProperty Name="cSite_zip" ColumnName="cSite_zip" />
+          <ScalarProperty Name="cSite_phone" ColumnName="cSite_phone" />
+          <ScalarProperty Name="cSite_fax" ColumnName="cSite_fax" />
+          <ScalarProperty Name="cSite_contact" ColumnName="cSite_contact" />
+          <ScalarProperty Name="cSite_e_mail" ColumnName="cSite_e_mail" />
+          <ScalarProperty Name="cArea_ID" ColumnName="cArea_ID" />
+          <ScalarProperty Name="cType_ID" ColumnName="cType_ID" />
+          <ScalarProperty Name="cCycle_ID" ColumnName="cCycle_ID" />
+          <ScalarProperty Name="cTax_Table_ID" ColumnName="cTax_Table_ID" />
+          <ScalarProperty Name="cGroup_ID" ColumnName="cGroup_ID" />
+          <ScalarProperty Name="cSystem_ID" ColumnName="cSystem_ID" />
+          <ScalarProperty Name="cStatus_ID" ColumnName="cStatus_ID" />
+          <ScalarProperty Name="cNew_status_ID" ColumnName="cNew_status_ID" />
+          <ScalarProperty Name="dNew_status_date" ColumnName="dNew_status_date" />
+          <ScalarProperty Name="cIndex_type" ColumnName="cIndex_type" />
+          <ScalarProperty Name="dStart" ColumnName="dStart" />
+          <ScalarProperty Name="dReview" ColumnName="dReview" />
+          <ScalarProperty Name="dSuspend" ColumnName="dSuspend" />
+          <ScalarProperty Name="dRestart" ColumnName="dRestart" />
+          <ScalarProperty Name="dStop" ColumnName="dStop" />
+          <ScalarProperty Name="cRecycle" ColumnName="cRecycle" />
+          <ScalarProperty Name="cMap1" ColumnName="cMap1" />
+          <ScalarProperty Name="cMap2" ColumnName="cMap2" />
+          <ScalarProperty Name="cMap3" ColumnName="cMap3" />
+          <ScalarProperty Name="cGeocode" ColumnName="cGeocode" />
+          <ScalarProperty Name="cLongitude" ColumnName="cLongitude" />
+          <ScalarProperty Name="cLatitude" ColumnName="cLatitude" />
+          <ScalarProperty Name="cMap_other" ColumnName="cMap_other" />
+          <ScalarProperty Name="nUnbilled" ColumnName="nUnbilled" />
+          <ScalarProperty Name="nCurrent" ColumnName="nCurrent" />
+          <ScalarProperty Name="nThirty" ColumnName="nThirty" />
+          <ScalarProperty Name="nSixty" ColumnName="nSixty" />
+          <ScalarProperty Name="nNinety" ColumnName="nNinety" />
+          <ScalarProperty Name="nOne_twenty" ColumnName="nOne_twenty" />
+          <ScalarProperty Name="nBalance" ColumnName="nBalance" />
+          <ScalarProperty Name="nLate_charg" ColumnName="nLate_charg" />
+          <ScalarProperty Name="cLate_start" ColumnName="cLate_start" />
+          <ScalarProperty Name="nLast_l_chg" ColumnName="nLast_l_chg" />
+          <ScalarProperty Name="nComputd_on" ColumnName="nComputd_on" />
+          <ScalarProperty Name="dLast_late_charge_date" ColumnName="dLast_late_charge_date" />
+          <ScalarProperty Name="cNotice_start" ColumnName="cNotice_start" />
+          <ScalarProperty Name="nLast_notic" ColumnName="nLast_notic" />
+          <ScalarProperty Name="dLast_notice_date" ColumnName="dLast_notice_date" />
+          <ScalarProperty Name="nLast_paid" ColumnName="nLast_paid" />
+          <ScalarProperty Name="dDate_paid" ColumnName="dDate_paid" />
+          <ScalarProperty Name="cPurchase_order" ColumnName="cPurchase_order" />
+          <ScalarProperty Name="dPo_expires" ColumnName="dPo_expires" />
+          <ScalarProperty Name="nCr_limit" ColumnName="nCr_limit" />
+          <ScalarProperty Name="nDeposit" ColumnName="nDeposit" />
+          <ScalarProperty Name="dDepos_date" ColumnName="dDepos_date" />
+          <ScalarProperty Name="lContract_required" ColumnName="lContract_required" />
+          <ScalarProperty Name="lBank_eft" ColumnName="lBank_eft" />
+          <ScalarProperty Name="cBank_ID" ColumnName="cBank_ID" />
+          <ScalarProperty Name="cBank_acct" ColumnName="cBank_acct" />
+          <ScalarProperty Name="cBank_drawr" ColumnName="cBank_drawr" />
+          <ScalarProperty Name="cCurrent_invoice" ColumnName="cCurrent_invoice" />
+          <ScalarProperty Name="cChanges" ColumnName="cChanges" />
+          <ScalarProperty Name="cUser_1" ColumnName="cUser_1" />
+          <ScalarProperty Name="cUser_2" ColumnName="cUser_2" />
+          <ScalarProperty Name="cUser_3" ColumnName="cUser_3" />
+          <ScalarProperty Name="cUser_4" ColumnName="cUser_4" />
+          <ScalarProperty Name="cUser_5" ColumnName="cUser_5" />
+          <ScalarProperty Name="nInvoices" ColumnName="nInvoices" />
+          <ScalarProperty Name="nComments" ColumnName="nComments" />
+          <ScalarProperty Name="nServicelinks" ColumnName="nServicelinks" />
+          <ScalarProperty Name="nCharges" ColumnName="nCharges" />
+          <ScalarProperty Name="nRoutes" ColumnName="nRoutes" />
+          <ScalarProperty Name="nContainers" ColumnName="nContainers" />
+          <ScalarProperty Name="nContracts" ColumnName="nContracts" />
+          <ScalarProperty Name="nWorkorders" ColumnName="nWorkorders" />
+          <ScalarProperty Name="lRequires_financial_approval" ColumnName="lRequires_financial_approval" />
+          <ScalarProperty Name="lRequires_operations_approval" ColumnName="lRequires_operations_approval" />
+          <ScalarProperty Name="dLast_servc" ColumnName="dLast_servc" />
+          <ScalarProperty Name="cProrate_type" ColumnName="cProrate_type" />
+          <ScalarProperty Name="dProrate_date" ColumnName="dProrate_date" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+          <ScalarProperty Name="cSite_ID" ColumnName="cSite_ID" />
+          <ScalarProperty Name="cCell_Phone" ColumnName="cCell_Phone" />
+          <ScalarProperty Name="cSite_Cell_Phone" ColumnName="cSite_Cell_Phone" />
+          <ScalarProperty Name="lEmail_Statement" ColumnName="lEmail_Statement" />
+          <ScalarProperty Name="lEmail_Only_Statement" ColumnName="lEmail_Only_Statement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dTray">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dTray)">
+        <MappingFragment StoreEntitySet="dTray">
+          <ScalarProperty Name="cID" ColumnName="cID" />
+          <ScalarProperty Name="cTray_ID" ColumnName="cTray_ID" />
+          <ScalarProperty Name="lSend" ColumnName="lSend" />
+          <ScalarProperty Name="lPriority" ColumnName="lPriority" />
+          <ScalarProperty Name="lAuto_show" ColumnName="lAuto_show" />
+          <ScalarProperty Name="lComplete" ColumnName="lComplete" />
+          <ScalarProperty Name="dCreate_date" ColumnName="dCreate_date" />
+          <ScalarProperty Name="cCreate_time" ColumnName="cCreate_time" />
+          <ScalarProperty Name="dSend_date" ColumnName="dSend_date" />
+          <ScalarProperty Name="cSend_time" ColumnName="cSend_time" />
+          <ScalarProperty Name="dSchedule_date" ColumnName="dSchedule_date" />
+          <ScalarProperty Name="cSchedule_time" ColumnName="cSchedule_time" />
+          <ScalarProperty Name="dComplete_date" ColumnName="dComplete_date" />
+          <ScalarProperty Name="cComplete_time" ColumnName="cComplete_time" />
+          <ScalarProperty Name="cFrom_user_id" ColumnName="cFrom_user_id" />
+          <ScalarProperty Name="cTo_Tray_ID" ColumnName="cTo_Tray_ID" />
+          <ScalarProperty Name="cSend_Tray_ID" ColumnName="cSend_Tray_ID" />
+          <ScalarProperty Name="cAccount" ColumnName="cAccount" />
+          <ScalarProperty Name="cEntity_id" ColumnName="cEntity_id" />
+          <ScalarProperty Name="cSource_ID" ColumnName="cSource_ID" />
+          <ScalarProperty Name="lForward_email" ColumnName="lForward_email" />
+          <ScalarProperty Name="cSubject" ColumnName="cSubject" />
+          <ScalarProperty Name="mComment" ColumnName="mComment" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dWorkOrder">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dWorkOrder)">
+        <MappingFragment StoreEntitySet="dWorkOrder">
+          <ScalarProperty Name="cWorkorder" ColumnName="cWorkorder" />
+          <ScalarProperty Name="lSelected" ColumnName="lSelected" />
+          <ScalarProperty Name="cSelected_user" ColumnName="cSelected_user" />
+          <ScalarProperty Name="cAccount" ColumnName="cAccount" />
+          <ScalarProperty Name="cSite_name" ColumnName="cSite_name" />
+          <ScalarProperty Name="cSite_address" ColumnName="cSite_address" />
+          <ScalarProperty Name="dSchd_dt" ColumnName="dSchd_dt" />
+          <ScalarProperty Name="cSchd_time" ColumnName="cSchd_time" />
+          <ScalarProperty Name="cWorkorder_Type" ColumnName="cWorkorder_Type" />
+          <ScalarProperty Name="cLevel" ColumnName="cLevel" />
+          <ScalarProperty Name="cDepartment_ID" ColumnName="cDepartment_ID" />
+          <ScalarProperty Name="cService_description" ColumnName="cService_description" />
+          <ScalarProperty Name="cContract_ID" ColumnName="cContract_ID" />
+          <ScalarProperty Name="cPurchase_order" ColumnName="cPurchase_order" />
+          <ScalarProperty Name="cInvoice" ColumnName="cInvoice" />
+          <ScalarProperty Name="cUser_cod" ColumnName="cUser_cod" />
+          <ScalarProperty Name="lPrinted" ColumnName="lPrinted" />
+          <ScalarProperty Name="lRequired_check_passed" ColumnName="lRequired_check_passed" />
+          <ScalarProperty Name="lCompleted" ColumnName="lCompleted" />
+          <ScalarProperty Name="cAcct_Route_ID" ColumnName="cAcct_Route_ID" />
+          <ScalarProperty Name="cRoute_ID" ColumnName="cRoute_ID" />
+          <ScalarProperty Name="cTransporter_ID" ColumnName="cTransporter_ID" />
+          <ScalarProperty Name="cVehicle_ID" ColumnName="cVehicle_ID" />
+          <ScalarProperty Name="nOdom_out" ColumnName="nOdom_out" />
+          <ScalarProperty Name="nOdom_in" ColumnName="nOdom_in" />
+          <ScalarProperty Name="cReceiver_ID" ColumnName="cReceiver_ID" />
+          <ScalarProperty Name="cDocket_ID" ColumnName="cDocket_ID" />
+          <ScalarProperty Name="nVolume" ColumnName="nVolume" />
+          <ScalarProperty Name="cUnit_Of_Measure_ID" ColumnName="cUnit_Of_Measure_ID" />
+          <ScalarProperty Name="nLf_cost" ColumnName="nLf_cost" />
+          <ScalarProperty Name="dCritical_date" ColumnName="dCritical_date" />
+          <ScalarProperty Name="cCritical_start_time" ColumnName="cCritical_start_time" />
+          <ScalarProperty Name="cCritical_end_time" ColumnName="cCritical_end_time" />
+          <ScalarProperty Name="nCritical_duration" ColumnName="nCritical_duration" />
+          <ScalarProperty Name="nTotal_cost" ColumnName="nTotal_cost" />
+          <ScalarProperty Name="nTotal_revenue" ColumnName="nTotal_revenue" />
+          <ScalarProperty Name="nProfit" ColumnName="nProfit" />
+          <ScalarProperty Name="lBatch_created" ColumnName="lBatch_created" />
+          <ScalarProperty Name="nSequence" ColumnName="nSequence" />
+          <ScalarProperty Name="cCroute_fk" ColumnName="cCroute_fk" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+          <ScalarProperty Name="cCanceled_Level" ColumnName="cCanceled_Level" />
+          <ScalarProperty Name="cWO_User_Character_1" ColumnName="cWO_User_Character_1" />
+          <ScalarProperty Name="cWO_User_Character_2" ColumnName="cWO_User_Character_2" />
+          <ScalarProperty Name="cWO_User_Character_3" ColumnName="cWO_User_Character_3" />
+          <ScalarProperty Name="lWO_User_Checkbox_1" ColumnName="lWO_User_Checkbox_1" />
+          <ScalarProperty Name="lWO_User_Checkbox_2" ColumnName="lWO_User_Checkbox_2" />
+          <ScalarProperty Name="lWO_User_Checkbox_3" ColumnName="lWO_User_Checkbox_3" />
+          <ScalarProperty Name="dWO_User_Date_1" ColumnName="dWO_User_Date_1" />
+          <ScalarProperty Name="dWO_User_Date_2" ColumnName="dWO_User_Date_2" />
+          <ScalarProperty Name="dWO_User_Date_3" ColumnName="dWO_User_Date_3" />
+          <ScalarProperty Name="nWO_User_Number_1" ColumnName="nWO_User_Number_1" />
+          <ScalarProperty Name="nWO_User_Number_2" ColumnName="nWO_User_Number_2" />
+          <ScalarProperty Name="nWO_User_Number_3" ColumnName="nWO_User_Number_3" />
+          <ScalarProperty Name="mWO_User_Memo_1" ColumnName="mWO_User_Memo_1" />
+          <ScalarProperty Name="mWO_User_Memo_2" ColumnName="mWO_User_Memo_2" />
+          <ScalarProperty Name="mWO_User_Memo_3" ColumnName="mWO_User_Memo_3" />
+          <ScalarProperty Name="nDuration" ColumnName="nDuration" />
+          <ScalarProperty Name="cInterval_ID" ColumnName="cInterval_ID" />
+          <ScalarProperty Name="cSeries_ID" ColumnName="cSeries_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dWorkorder_Charge">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dWorkorder_Charge)">
+        <MappingFragment StoreEntitySet="dWorkorder_Charge">
+          <ScalarProperty Name="cID" ColumnName="cID" />
+          <ScalarProperty Name="cWorkorder" ColumnName="cWorkorder" />
+          <ScalarProperty Name="cContract_ID" ColumnName="cContract_ID" />
+          <ScalarProperty Name="cCharge_ID" ColumnName="cCharge_ID" />
+          <ScalarProperty Name="cContract_Charge_ID" ColumnName="cContract_Charge_ID" />
+          <ScalarProperty Name="nOrder" ColumnName="nOrder" />
+          <ScalarProperty Name="lRental" ColumnName="lRental" />
+          <ScalarProperty Name="lActive" ColumnName="lActive" />
+          <ScalarProperty Name="cCode" ColumnName="cCode" />
+          <ScalarProperty Name="cDescript" ColumnName="cDescript" />
+          <ScalarProperty Name="nUnits" ColumnName="nUnits" />
+          <ScalarProperty Name="nOverride" ColumnName="nOverride" />
+          <ScalarProperty Name="cReference" ColumnName="cReference" />
+          <ScalarProperty Name="nVolume" ColumnName="nVolume" />
+          <ScalarProperty Name="mComment" ColumnName="mComment" />
+          <ScalarProperty Name="nCost" ColumnName="nCost" />
+          <ScalarProperty Name="nBatch" ColumnName="nBatch" />
+          <ScalarProperty Name="nEntry" ColumnName="nEntry" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+          <ScalarProperty Name="cBatch_ID" ColumnName="cBatch_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dWorkorder_Comment">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dWorkorder_Comment)">
+        <MappingFragment StoreEntitySet="dWorkorder_Comment">
+          <ScalarProperty Name="cID" ColumnName="cID" />
+          <ScalarProperty Name="cWorkorder" ColumnName="cWorkorder" />
+          <ScalarProperty Name="cContract_ID" ColumnName="cContract_ID" />
+          <ScalarProperty Name="cComment_ID" ColumnName="cComment_ID" />
+          <ScalarProperty Name="lCreate_comment" ColumnName="lCreate_comment" />
+          <ScalarProperty Name="nOrder" ColumnName="nOrder" />
+          <ScalarProperty Name="cComment_Type_ID" ColumnName="cComment_Type_ID" />
+          <ScalarProperty Name="mComment" ColumnName="mComment" />
+          <ScalarProperty Name="cCreated_Comment_ID" ColumnName="cCreated_Comment_ID" />
+          <ScalarProperty Name="cWorkorder_Setup_ID" ColumnName="cWorkorder_Setup_ID" />
+          <ScalarProperty Name="lProcessed" ColumnName="lProcessed" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dWorkorder_Setup">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dWorkorder_Setup)">
+        <MappingFragment StoreEntitySet="dWorkorder_Setup">
+          <ScalarProperty Name="cWorkorder_Type" ColumnName="cWorkorder_Type" />
+          <ScalarProperty Name="cLevel" ColumnName="cLevel" />
+          <ScalarProperty Name="cDepartment_ID" ColumnName="cDepartment_ID" />
+          <ScalarProperty Name="cTray_ID" ColumnName="cTray_ID" />
+          <ScalarProperty Name="cDescript" ColumnName="cDescript" />
+          <ScalarProperty Name="cService_description" ColumnName="cService_description" />
+          <ScalarProperty Name="cSend_Back_Level" ColumnName="cSend_Back_Level" />
+          <ScalarProperty Name="lOn_call" ColumnName="lOn_call" />
+          <ScalarProperty Name="lCheck_Inactive_Delete" ColumnName="lCheck_Inactive_Delete" />
+          <ScalarProperty Name="cAuto_route" ColumnName="cAuto_route" />
+          <ScalarProperty Name="lAuto_dspch" ColumnName="lAuto_dspch" />
+          <ScalarProperty Name="lCreate_onetime_sequence" ColumnName="lCreate_onetime_sequence" />
+          <ScalarProperty Name="lPrint" ColumnName="lPrint" />
+          <ScalarProperty Name="cPrint_to" ColumnName="cPrint_to" />
+          <ScalarProperty Name="lProcess" ColumnName="lProcess" />
+          <ScalarProperty Name="lLast_level" ColumnName="lLast_level" />
+          <ScalarProperty Name="lRequired_view" ColumnName="lRequired_view" />
+          <ScalarProperty Name="lCheck_required_on_save" ColumnName="lCheck_required_on_save" />
+          <ScalarProperty Name="lLog_save" ColumnName="lLog_save" />
+          <ScalarProperty Name="lCopy_Service_Code_Comment" ColumnName="lCopy_Service_Code_Comment" />
+          <ScalarProperty Name="lCheck_required" ColumnName="lCheck_required" />
+          <ScalarProperty Name="lCheck_charge_required" ColumnName="lCheck_charge_required" />
+          <ScalarProperty Name="lCheck_comment_required" ColumnName="lCheck_comment_required" />
+          <ScalarProperty Name="lCheck_container_required" ColumnName="lCheck_container_required" />
+          <ScalarProperty Name="lCheck_datetime_required" ColumnName="lCheck_datetime_required" />
+          <ScalarProperty Name="lCheck_content_required" ColumnName="lCheck_content_required" />
+          <ScalarProperty Name="lTransport_tab" ColumnName="lTransport_tab" />
+          <ScalarProperty Name="lFinancial_tab" ColumnName="lFinancial_tab" />
+          <ScalarProperty Name="cCharge_tab" ColumnName="cCharge_tab" />
+          <ScalarProperty Name="cContainer_tab" ColumnName="cContainer_tab" />
+          <ScalarProperty Name="cComment_tab" ColumnName="cComment_tab" />
+          <ScalarProperty Name="cDate_tab" ColumnName="cDate_tab" />
+          <ScalarProperty Name="cContent_tab" ColumnName="cContent_tab" />
+          <ScalarProperty Name="lUser_tab" ColumnName="lUser_tab" />
+          <ScalarProperty Name="lLandfill_tab" ColumnName="lLandfill_tab" />
+          <ScalarProperty Name="nStart_tab" ColumnName="nStart_tab" />
+          <ScalarProperty Name="e_caccount" ColumnName="e_caccount" />
+          <ScalarProperty Name="E_CSITE_NAME" ColumnName="E_CSITE_NAME" />
+          <ScalarProperty Name="E_CSITE_ADDRESS" ColumnName="E_CSITE_ADDRESS" />
+          <ScalarProperty Name="E_CWORKORDER" ColumnName="E_CWORKORDER" />
+          <ScalarProperty Name="E_CWORKORDER_TYPE" ColumnName="E_CWORKORDER_TYPE" />
+          <ScalarProperty Name="E_CLEVEL" ColumnName="E_CLEVEL" />
+          <ScalarProperty Name="E_CDEPARTMENT_ID" ColumnName="E_CDEPARTMENT_ID" />
+          <ScalarProperty Name="E_CSERVICE_DESCRIPTION" ColumnName="E_CSERVICE_DESCRIPTION" />
+          <ScalarProperty Name="E_DSCHD_DT" ColumnName="E_DSCHD_DT" />
+          <ScalarProperty Name="E_CSCHD_TIME" ColumnName="E_CSCHD_TIME" />
+          <ScalarProperty Name="E_CCONTRACT_ID" ColumnName="E_CCONTRACT_ID" />
+          <ScalarProperty Name="E_CPURCHASE_ORDER" ColumnName="E_CPURCHASE_ORDER" />
+          <ScalarProperty Name="E_CINVOICE" ColumnName="E_CINVOICE" />
+          <ScalarProperty Name="E_CUSER_COD" ColumnName="E_CUSER_COD" />
+          <ScalarProperty Name="cE_acct_day" ColumnName="cE_acct_day" />
+          <ScalarProperty Name="E_CACCT_ROUTE_ID" ColumnName="E_CACCT_ROUTE_ID" />
+          <ScalarProperty Name="cE_day" ColumnName="cE_day" />
+          <ScalarProperty Name="E_CROUTE_ID" ColumnName="E_CROUTE_ID" />
+          <ScalarProperty Name="E_CTRANSPORTER_ID" ColumnName="E_CTRANSPORTER_ID" />
+          <ScalarProperty Name="E_CVEHICLE_ID" ColumnName="E_CVEHICLE_ID" />
+          <ScalarProperty Name="E_NODOM_OUT" ColumnName="E_NODOM_OUT" />
+          <ScalarProperty Name="E_NODOM_IN" ColumnName="E_NODOM_IN" />
+          <ScalarProperty Name="lUpdate_container_on_advance" ColumnName="lUpdate_container_on_advance" />
+          <ScalarProperty Name="cDel_rmv_ct" ColumnName="cDel_rmv_ct" />
+          <ScalarProperty Name="cDisp_code" ColumnName="cDisp_code" />
+          <ScalarProperty Name="E_CRECEIVER_ID" ColumnName="E_CRECEIVER_ID" />
+          <ScalarProperty Name="E_CDOCKET_ID" ColumnName="E_CDOCKET_ID" />
+          <ScalarProperty Name="E_NVOLUME" ColumnName="E_NVOLUME" />
+          <ScalarProperty Name="E_CMEASURE" ColumnName="E_CMEASURE" />
+          <ScalarProperty Name="E_NLF_COST" ColumnName="E_NLF_COST" />
+          <ScalarProperty Name="cImage_ID" ColumnName="cImage_ID" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+          <ScalarProperty Name="cCancel_Level" ColumnName="cCancel_Level" />
+          <ScalarProperty Name="e_cCanceled_Level" ColumnName="e_cCanceled_Level" />
+          <ScalarProperty Name="e_cWO_User_Character_1" ColumnName="e_cWO_User_Character_1" />
+          <ScalarProperty Name="e_cWO_User_Character_2" ColumnName="e_cWO_User_Character_2" />
+          <ScalarProperty Name="e_cWO_User_Character_3" ColumnName="e_cWO_User_Character_3" />
+          <ScalarProperty Name="e_cWO_User_Checkbox_1" ColumnName="e_cWO_User_Checkbox_1" />
+          <ScalarProperty Name="e_cWO_User_Checkbox_2" ColumnName="e_cWO_User_Checkbox_2" />
+          <ScalarProperty Name="e_cWO_User_Checkbox_3" ColumnName="e_cWO_User_Checkbox_3" />
+          <ScalarProperty Name="e_cWO_User_Date_1" ColumnName="e_cWO_User_Date_1" />
+          <ScalarProperty Name="e_cWO_User_Date_2" ColumnName="e_cWO_User_Date_2" />
+          <ScalarProperty Name="e_cWO_User_Date_3" ColumnName="e_cWO_User_Date_3" />
+          <ScalarProperty Name="e_cWO_User_Number_1" ColumnName="e_cWO_User_Number_1" />
+          <ScalarProperty Name="e_cWO_User_Number_2" ColumnName="e_cWO_User_Number_2" />
+          <ScalarProperty Name="e_cWO_User_Number_3" ColumnName="e_cWO_User_Number_3" />
+          <ScalarProperty Name="e_cWO_User_Memo_1" ColumnName="e_cWO_User_Memo_1" />
+          <ScalarProperty Name="e_cWO_User_Memo_2" ColumnName="e_cWO_User_Memo_2" />
+          <ScalarProperty Name="e_cWO_User_Memo_3" ColumnName="e_cWO_User_Memo_3" />
+          <ScalarProperty Name="lProcess_Post_Charge" ColumnName="lProcess_Post_Charge" />
+          <ScalarProperty Name="lProcess_Post_Landfill_Charge" ColumnName="lProcess_Post_Landfill_Charge" />
+          <ScalarProperty Name="lProcess_Move_Container" ColumnName="lProcess_Move_Container" />
+          <ScalarProperty Name="lProcess_Create_Comment" ColumnName="lProcess_Create_Comment" />
+          <ScalarProperty Name="lProcess_Create_Docket" ColumnName="lProcess_Create_Docket" />
+          <ScalarProperty Name="e_cDuration" ColumnName="e_cDuration" />
+          <ScalarProperty Name="lPlanner_Bell" ColumnName="lPlanner_Bell" />
+          <ScalarProperty Name="lPlanner_House" ColumnName="lPlanner_House" />
+          <ScalarProperty Name="lPlanner_Key" ColumnName="lPlanner_Key" />
+          <ScalarProperty Name="lPlanner_Question" ColumnName="lPlanner_Question" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dCharge">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dCharge)">
+        <MappingFragment StoreEntitySet="dCharge">
+          <ScalarProperty Name="cId" ColumnName="cId" />
+          <ScalarProperty Name="cAccount" ColumnName="cAccount" />
+          <ScalarProperty Name="cArea_ID" ColumnName="cArea_ID" />
+          <ScalarProperty Name="cCycle_ID" ColumnName="cCycle_ID" />
+          <ScalarProperty Name="cCode" ColumnName="cCode" />
+          <ScalarProperty Name="cDescript" ColumnName="cDescript" />
+          <ScalarProperty Name="nUnits" ColumnName="nUnits" />
+          <ScalarProperty Name="nOverride" ColumnName="nOverride" />
+          <ScalarProperty Name="cReference" ColumnName="cReference" />
+          <ScalarProperty Name="nFrequency" ColumnName="nFrequency" />
+          <ScalarProperty Name="nDiscount" ColumnName="nDiscount" />
+          <ScalarProperty Name="dLast_service" ColumnName="dLast_service" />
+          <ScalarProperty Name="dNext_service" ColumnName="dNext_service" />
+          <ScalarProperty Name="dStart_date" ColumnName="dStart_date" />
+          <ScalarProperty Name="dReview_date" ColumnName="dReview_date" />
+          <ScalarProperty Name="dLast_review_date" ColumnName="dLast_review_date" />
+          <ScalarProperty Name="dApproved_date" ColumnName="dApproved_date" />
+          <ScalarProperty Name="cApproved_user" ColumnName="cApproved_user" />
+          <ScalarProperty Name="dStop_date" ColumnName="dStop_date" />
+          <ScalarProperty Name="cStop_code_ID" ColumnName="cStop_code_ID" />
+          <ScalarProperty Name="cContract" ColumnName="cContract" />
+          <ScalarProperty Name="nLinks" ColumnName="nLinks" />
+          <ScalarProperty Name="mComment" ColumnName="mComment" />
+          <ScalarProperty Name="cProrate_type" ColumnName="cProrate_type" />
+          <ScalarProperty Name="dProrate_date" ColumnName="dProrate_date" />
+          <ScalarProperty Name="lHistory" ColumnName="lHistory" />
+          <ScalarProperty Name="nOld_route" ColumnName="nOld_route" />
+          <ScalarProperty Name="cOld_day" ColumnName="cOld_day" />
+          <ScalarProperty Name="cOld_days" ColumnName="cOld_days" />
+          <ScalarProperty Name="cOld_container" ColumnName="cOld_container" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+          <ScalarProperty Name="nPrice_Per_Service" ColumnName="nPrice_Per_Service" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dCode">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dCode)">
+        <MappingFragment StoreEntitySet="dCode">
+          <ScalarProperty Name="cCode" ColumnName="cCode" />
+          <ScalarProperty Name="cDescript" ColumnName="cDescript" />
+          <ScalarProperty Name="cCategory_ID" ColumnName="cCategory_ID" />
+          <ScalarProperty Name="nUnit_price" ColumnName="nUnit_price" />
+          <ScalarProperty Name="nFactor" ColumnName="nFactor" />
+          <ScalarProperty Name="cUnit_Of_Measure_ID" ColumnName="cUnit_Of_Measure_ID" />
+          <ScalarProperty Name="lCredit" ColumnName="lCredit" />
+          <ScalarProperty Name="lSuspend" ColumnName="lSuspend" />
+          <ScalarProperty Name="lContract_required" ColumnName="lContract_required" />
+          <ScalarProperty Name="lService" ColumnName="lService" />
+          <ScalarProperty Name="lRental" ColumnName="lRental" />
+          <ScalarProperty Name="lOnly_area_pricing" ColumnName="lOnly_area_pricing" />
+          <ScalarProperty Name="lAuto_copy_content_profile" ColumnName="lAuto_copy_content_profile" />
+          <ScalarProperty Name="lAccumulate_volume_stats" ColumnName="lAccumulate_volume_stats" />
+          <ScalarProperty Name="lUnits_required" ColumnName="lUnits_required" />
+          <ScalarProperty Name="lReference_required" ColumnName="lReference_required" />
+          <ScalarProperty Name="lComment_required" ColumnName="lComment_required" />
+          <ScalarProperty Name="lVolume_required" ColumnName="lVolume_required" />
+          <ScalarProperty Name="lCost_required" ColumnName="lCost_required" />
+          <ScalarProperty Name="cGl_credit" ColumnName="cGl_credit" />
+          <ScalarProperty Name="cGl_debit" ColumnName="cGl_debit" />
+          <ScalarProperty Name="lIs_tax_code" ColumnName="lIs_tax_code" />
+          <ScalarProperty Name="lTax_1" ColumnName="lTax_1" />
+          <ScalarProperty Name="lTax_2" ColumnName="lTax_2" />
+          <ScalarProperty Name="lTax_3" ColumnName="lTax_3" />
+          <ScalarProperty Name="lTax_4" ColumnName="lTax_4" />
+          <ScalarProperty Name="lTax_5" ColumnName="lTax_5" />
+          <ScalarProperty Name="cLink_type" ColumnName="cLink_type" />
+          <ScalarProperty Name="cLink_code" ColumnName="cLink_code" />
+          <ScalarProperty Name="nBreakpoint" ColumnName="nBreakpoint" />
+          <ScalarProperty Name="cImage_ID" ColumnName="cImage_ID" />
+          <ScalarProperty Name="mComment" ColumnName="mComment" />
+          <ScalarProperty Name="cReporting_Level_1" ColumnName="cReporting_Level_1" />
+          <ScalarProperty Name="cReporting_Level_2" ColumnName="cReporting_Level_2" />
+          <ScalarProperty Name="cReporting_Level_3" ColumnName="cReporting_Level_3" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+          <ScalarProperty Name="nPrice_Per_Service" ColumnName="nPrice_Per_Service" />
+          <ScalarProperty Name="nPrice_Per_Service_Factor" ColumnName="nPrice_Per_Service_Factor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dOVP_Message">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dOVP_Message)">
+        <MappingFragment StoreEntitySet="dOVP_Message">
+          <ScalarProperty Name="cMessageID" ColumnName="cMessageID" />
+          <ScalarProperty Name="cAccount" ColumnName="cAccount" />
+          <ScalarProperty Name="cArea_ID" ColumnName="cArea_ID" />
+          <ScalarProperty Name="cSubject" ColumnName="cSubject" />
+          <ScalarProperty Name="cMessage" ColumnName="cMessage" />
+          <ScalarProperty Name="dDate" ColumnName="dDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dComment">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dComment)">
+        <MappingFragment StoreEntitySet="dComment">
+          <ScalarProperty Name="cId" ColumnName="cId" />
+          <ScalarProperty Name="cAccount" ColumnName="cAccount" />
+          <ScalarProperty Name="dDate" ColumnName="dDate" />
+          <ScalarProperty Name="dThru" ColumnName="dThru" />
+          <ScalarProperty Name="cType_ID" ColumnName="cType_ID" />
+          <ScalarProperty Name="lPin_note" ColumnName="lPin_note" />
+          <ScalarProperty Name="lStatement" ColumnName="lStatement" />
+          <ScalarProperty Name="lRoute" ColumnName="lRoute" />
+          <ScalarProperty Name="mComment" ColumnName="mComment" />
+          <ScalarProperty Name="nThru_date_interval" ColumnName="nThru_date_interval" />
+          <ScalarProperty Name="cInverse_julian" ColumnName="cInverse_julian" />
+          <ScalarProperty Name="lActive" ColumnName="lActive" />
+          <ScalarProperty Name="nOld_route" ColumnName="nOld_route" />
+          <ScalarProperty Name="cOld_day" ColumnName="cOld_day" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dComment_Type_Setup">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dComment_Type_Setup)">
+        <MappingFragment StoreEntitySet="dComment_Type_Setup">
+          <ScalarProperty Name="cID" ColumnName="cID" />
+          <ScalarProperty Name="cDescript" ColumnName="cDescript" />
+          <ScalarProperty Name="lPin_note" ColumnName="lPin_note" />
+          <ScalarProperty Name="lStatement" ColumnName="lStatement" />
+          <ScalarProperty Name="lRoute" ColumnName="lRoute" />
+          <ScalarProperty Name="lComment_required" ColumnName="lComment_required" />
+          <ScalarProperty Name="cImage_ID" ColumnName="cImage_ID" />
+          <ScalarProperty Name="cAuto_link_entity" ColumnName="cAuto_link_entity" />
+          <ScalarProperty Name="mPredefined" ColumnName="mPredefined" />
+          <ScalarProperty Name="nThru_date_interval" ColumnName="nThru_date_interval" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dOVP_LOOKUPRole">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dOVP_LOOKUPRole)">
+        <MappingFragment StoreEntitySet="dOVP_LOOKUPRole">
+          <ScalarProperty Name="LOOKUPRoleID" ColumnName="LOOKUPRoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+          <ScalarProperty Name="RowCreatedSYSUserID" ColumnName="RowCreatedSYSUserID" />
+          <ScalarProperty Name="RowCreatedDateTime" ColumnName="RowCreatedDateTime" />
+          <ScalarProperty Name="RowModifiedSYSUserID" ColumnName="RowModifiedSYSUserID" />
+          <ScalarProperty Name="RowModifiedDateTime" ColumnName="RowModifiedDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dOVP_SYSUser">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dOVP_SYSUser)">
+        <MappingFragment StoreEntitySet="dOVP_SYSUser">
+          <ScalarProperty Name="SYSUserID" ColumnName="SYSUserID" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="PasswordEncryptedText" ColumnName="PasswordEncryptedText" />
+          <ScalarProperty Name="RowCreatedSYSUserID" ColumnName="RowCreatedSYSUserID" />
+          <ScalarProperty Name="RowCreatedDateTime" ColumnName="RowCreatedDateTime" />
+          <ScalarProperty Name="RowModifiedSYSUserID" ColumnName="RowModifiedSYSUserID" />
+          <ScalarProperty Name="RowModifiedDateTime" ColumnName="RowModifiedDateTime" />
+          <ScalarProperty Name="lConfirmedEmail" ColumnName="lConfirmedEmail" />
+          <ScalarProperty Name="cEmail" ColumnName="cEmail" />
+          <ScalarProperty Name="cAccount" ColumnName="cAccount" />
+          <ScalarProperty Name="cEncrytedToken" ColumnName="cEncrytedToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dOVP_SYSUserProfile">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dOVP_SYSUserProfile)">
+        <MappingFragment StoreEntitySet="dOVP_SYSUserProfile">
+          <ScalarProperty Name="SYSUserProfileID" ColumnName="SYSUserProfileID" />
+          <ScalarProperty Name="SYSUserID" ColumnName="SYSUserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="RowCreatedSYSUserID" ColumnName="RowCreatedSYSUserID" />
+          <ScalarProperty Name="RowCreatedDateTime" ColumnName="RowCreatedDateTime" />
+          <ScalarProperty Name="RowModifiedSYSUserID" ColumnName="RowModifiedSYSUserID" />
+          <ScalarProperty Name="RowModifiedDateTime" ColumnName="RowModifiedDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dOVP_SYSUserRole">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dOVP_SYSUserRole)">
+        <MappingFragment StoreEntitySet="dOVP_SYSUserRole">
+          <ScalarProperty Name="SYSUserRoleID" ColumnName="SYSUserRoleID" />
+          <ScalarProperty Name="SYSUserID" ColumnName="SYSUserID" />
+          <ScalarProperty Name="LOOKUPRoleID" ColumnName="LOOKUPRoleID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RowCreatedSYSUserID" ColumnName="RowCreatedSYSUserID" />
+          <ScalarProperty Name="RowCreatedDateTime" ColumnName="RowCreatedDateTime" />
+          <ScalarProperty Name="RowModifiedSYSUserID" ColumnName="RowModifiedSYSUserID" />
+          <ScalarProperty Name="RowModifiedDateTime" ColumnName="RowModifiedDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dRoute">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dRoute)">
+        <MappingFragment StoreEntitySet="dRoute">
+          <ScalarProperty Name="cID" ColumnName="cID" />
+          <ScalarProperty Name="cAccount" ColumnName="cAccount" />
+          <ScalarProperty Name="cRoute_ID" ColumnName="cRoute_ID" />
+          <ScalarProperty Name="nSequence" ColumnName="nSequence" />
+          <ScalarProperty Name="dStart_date" ColumnName="dStart_date" />
+          <ScalarProperty Name="dStop_date" ColumnName="dStop_date" />
+          <ScalarProperty Name="cRoute_Cycle_ID" ColumnName="cRoute_Cycle_ID" />
+          <ScalarProperty Name="lActive" ColumnName="lActive" />
+          <ScalarProperty Name="cLink_ID" ColumnName="cLink_ID" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+          <ScalarProperty Name="cAlt_Route_ID" ColumnName="cAlt_Route_ID" />
+          <ScalarProperty Name="nAlt_Sequence" ColumnName="nAlt_Sequence" />
+          <ScalarProperty Name="cBearing" ColumnName="cBearing" />
+          <ScalarProperty Name="cGeo_Index" ColumnName="cGeo_Index" />
+          <ScalarProperty Name="cLatitude" ColumnName="cLatitude" />
+          <ScalarProperty Name="cLongitude" ColumnName="cLongitude" />
+          <ScalarProperty Name="cOnRoute_1" ColumnName="cOnRoute_1" />
+          <ScalarProperty Name="cOnRoute_2" ColumnName="cOnRoute_2" />
+          <ScalarProperty Name="cService_Window_1_Start_Time" ColumnName="cService_Window_1_Start_Time" />
+          <ScalarProperty Name="cService_Window_1_End_Time" ColumnName="cService_Window_1_End_Time" />
+          <ScalarProperty Name="cService_Window_2_Start_Time" ColumnName="cService_Window_2_Start_Time" />
+          <ScalarProperty Name="cService_Window_2_End_Time" ColumnName="cService_Window_2_End_Time" />
+          <ScalarProperty Name="cService_No_Service_Start_Time" ColumnName="cService_No_Service_Start_Time" />
+          <ScalarProperty Name="cService_No_Service_End_Time" ColumnName="cService_No_Service_End_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dRoute_Cycle_Date">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.dRoute_Cycle_Date)">
+        <MappingFragment StoreEntitySet="dRoute_Cycle_Date">
+          <ScalarProperty Name="cRoute_Cycle_ID" ColumnName="cRoute_Cycle_ID" />
+          <ScalarProperty Name="dDate" ColumnName="dDate" />
+          <ScalarProperty Name="tTime_stamp" ColumnName="tTime_stamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="VrpGetNextID" FunctionName="Model.Store.VrpGetNextID" />
+          <EntitySetMapping Name="dOVP_Services">
+            <EntityTypeMapping TypeName="Model.dOVP_Services">
+              <MappingFragment StoreEntitySet="dOVP_Services">
+                <ScalarProperty Name="ServType" ColumnName="ServType" />
+                <ScalarProperty Name="ServDescription" ColumnName="ServDescription" />
+                <ScalarProperty Name="ServTitle" ColumnName="ServTitle" />
+                <ScalarProperty Name="ServID" ColumnName="ServID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

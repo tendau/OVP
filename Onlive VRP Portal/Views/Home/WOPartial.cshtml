@@ -1,0 +1,116 @@
+﻿@model Onlive_VRP_Portal.Models.ViewModel.WorkOrderView
+
+
+    <div id="WOInfo">
+        <h3>Work Order Info:</h3>
+
+        @{var count = 1;}
+        @foreach (var dataview in Model.WDV)
+        {
+            var btntype = "success";
+
+            switch (dataview.Level)
+            {
+                case "1 ":
+                    btntype = "danger";
+                    break;
+                case "2 ":
+                    btntype = "warning";
+                    break;
+            }
+            <a href="#@("WOTable" + count)" style="margin-top:5px" class="btn btn-@btntype" data-toggle="collapse">Work Order @Html.DisplayFor(m => dataview.WorkOrderID)</a>
+            <table id="@("WOTable" + count)" class="collapse">
+                <tr>
+                    <td>Description</td>
+                    <td>@Html.DisplayFor(m => dataview.Description)</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td>@Html.DisplayFor(m => dataview.ScheduleDate)</td>
+                </tr>
+                <tr>
+                    <td>Time</td>
+                    <td>@Html.DisplayFor(m => dataview.ScheduleTime)</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>@Html.DisplayFor(m => dataview.SiteAddress)</td>
+                </tr>
+            </table>
+            <br />
+            count++;
+        }
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4">
+                    <span class="one">-Waiting approval</span>
+                </div>
+                <div class="col-xs-4">
+                    <span class="two">-Waiting for dispatch</span>
+                </div>
+                <div class="col-xs-4">
+                    <span class="three">-Dispatched/in progress</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="javascript:void(0)" style="float: right" class="btn btn-info newWO">New Work Order</a>
+    </div>
+
+    <div id="newWOdialog" style="display:none">
+        <input type="hidden" id="hidID" />
+        <table>
+            <tr>
+                <td>Type</td>
+                <td>@Html.DropDownListFor(o => o.newWoType, new SelectList(Model.types, "type", "typeDisplay"), "", new { id = "ddlType", @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>@Html.TextBoxFor(o => o.newWoDate, new { id = "dpWoDate", @class = "form-control datepicker", placeholder = "Enter date here..." })</td>
+            </tr>
+        </table>
+    </div>
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#dpWoDate').datepicker();
+        $('#dpWoDate').datepicker('setDate', 'today');
+
+        var initDialog = function (type) {
+            var title = type;
+            $('#newWOdialog').dialog({
+                autoOpen: false,
+                modal: true,
+                title: type,
+                width: 400,
+                buttons: {
+                    Save: function () {
+                        var type = $("#ddlType").val();
+                        var date = $("#dpWoDate").val();
+
+                        CreateWO(type, date);
+                        $(this).dialog("destroy");
+                    },
+                    Cancel: function () { $(this).dialog("destroy"); }
+                }
+            });
+        }
+
+        function CreateWO(type, date) {
+            $.ajax({
+                type: "POST",
+                url: "@(Url.Action("CreateWO", "Home"))",
+                data: { WOType: type, WODate: date }
+            });
+        }
+
+        $("a.newWO").on("click", function () {
+            initDialog("New Work Order");
+            $("#newWOdialog").dialog("open");
+            return false;
+        });
+    });
+</script>
