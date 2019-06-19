@@ -83,7 +83,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="changeServiceForm" method="post" action="/Home/StopService">
+            <form id="changeServiceForm" method="post" action='@Url.Action("StopService","Home")'>
                 <div class="modal-body">
                     <div class="container-fluid">
                         <input type="hidden" id="hidID" />
@@ -142,7 +142,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="/Home/StopService">
+            <form method="post" action='@Url.Action("StopService","Home")'>
                 <div class="modal-body">
                     <input type="hidden" id="hidID" />
                     @if (Model.currentServices.Count > 0)
@@ -198,7 +198,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="/Home/NewService">
+            <form method="post" action='@Url.Action("NewService","Home")'>
                 <div class="modal-body">
                     <input type="hidden" id="hidID" />
                     <div class="row text-center">
@@ -238,7 +238,7 @@
                 <h5 class="modal-title">New one time service request</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
-            <form method="post" action="/Home/NewOneTimeService">
+            <form method="post" action='@Url.Action("NewOneTimeService","Home")'>
                 <div class="modal-body">
                     <input type="hidden" id="hidID" />
                     <div class="row">
@@ -277,7 +277,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="/Home/StopService">
+            <form method="post" action='@Url.Action("StopService","Home")'>
                 <div class="modal-body">
                     <input type="hidden" id="hidID" />
                     <p>Please select the service or services from the list below.</p>
@@ -308,7 +308,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="/Home/StopService">
+            <form method="post" action='@Url.Action("StopService","Home")'>
                 <div class="modal-body">
                     <div class="row">
                         <p style="margin:5px;">Please select which service you would like to schedule a pick up for.</p>

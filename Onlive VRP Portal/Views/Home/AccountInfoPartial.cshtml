@@ -17,7 +17,6 @@
                     <td>
                         @Html.DisplayFor(m => Model.BillingName)<a href="#editAccountModal" data-toggle="modal" data-target="#editAccountModal"><img class="buttonImage img-fluid" src="~/Content/Images/editicon.png" /></a>
                     </td>
-                    </td>
                 </tr>
                 <tr>
                     <td>Billing Address:</td>
@@ -197,17 +196,17 @@
     </table>
 </div>*@
 
-@*Modal for edit account*@
+@*Modal for new address*@
 <div class="modal" tabindex="-1" role="dialog" id="reportNewAddressModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">New Adress</h5>
+                <h5 class="modal-title">New Address</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="/Home/reportNewAddress">
+            <form method="post" action='@Url.Action("reportNewAddress","Home")'>
                 <div class="modal-body">
                     <input type="hidden" id="hidID" />
                     <div class="row">
@@ -295,7 +294,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="/Home/EditAccount">
+            <form method="post" action="@Url.Action("EditAccount","Home")">
                 <div class="modal-body">
                     <input type="hidden" id="hidID" />
                     <div class="row">

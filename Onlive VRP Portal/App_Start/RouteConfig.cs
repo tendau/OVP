@@ -16,9 +16,9 @@ namespace Onlive_VRP_Portal
             );
 
             routes.MapRoute(
-                "NewService",
-                "Home/NewService",
-                new { Controller = "Home", Action = "NewService", id = UrlParameter.Optional }
+                "Home",
+                "{action}/{id}",
+                new { Controller = "Home", Action = "Index", id = UrlParameter.Optional }
                 );
         }
     }
